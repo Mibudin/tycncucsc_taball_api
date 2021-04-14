@@ -1,6 +1,6 @@
 "use strict";
 
-const TableSchema = require("../schema/table");
+const TableRecordSchema = require("../schema/table");
 
 
 let tableAmount = 0;
@@ -39,10 +39,10 @@ function initTableRecords(_tableAmount)
 
     for(let i = 0; i < tableAmount; i++)
     {
-        tableRecords[i] = new TableSchema(
+        tableRecords[i] = new TableRecordSchema(
             {
                 tableID: i,
-                isUsed: false
+                isOccupied: false
             }
         );
     }
@@ -51,11 +51,11 @@ function initTableRecords(_tableAmount)
 /**
  * 
  * @param {Number} tableID 
- * @param {Boolean} isUsed 
+ * @param {Boolean} isOccupied 
  */
-function setTableRecordsUsage(tableID, isUsed)
+function setTableRecordsUsage(tableID, isOccupied)
 {
-    tableRecords.find(element => element.tableID === tableID).isUsed = isUsed;
+    tableRecords.find(element => element.tableID === tableID).isOccupied = isOccupied;
 }
 
 

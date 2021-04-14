@@ -29,8 +29,8 @@ router.route("/tables/:tableID")
         let tableRecord = tableController.getTableRecord(Number(req.params.tableID));
         if(tableRecord === undefined)
         {
-            res.status(400)
-                .send("400 Bad Request: The table record with the given `tableID` was not found.");
+            res.status(404)
+                .send("404 Not Found: The table record with the given `tableID` was not found.");
         }
         res.json(tableRecord);
     });

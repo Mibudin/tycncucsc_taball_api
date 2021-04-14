@@ -19,7 +19,7 @@ info:
       THE PERMANENT PAIN!
       THE FOREVER WORK!
   contact:
-    name: "~TYCNCUCSC TABALL PROJECT~"
+    name: "Website Coming Soon..."
     url: "#"
     # email: ""
 
@@ -52,14 +52,8 @@ tags:
   - name: "General"
     description: "General operations of this API"
 
-  - name: "Account"
-    description: "Processes about accounts"
-
-  - name: "Players"
-    description: "Processes about players"
-
-  - name: "Me"
-    description: "Processes about **THIS** player"
+  - name: "Tables"
+    description: "Records of table-tennis tables"
 
 
 paths:
@@ -75,48 +69,12 @@ paths:
         200:
           description: "Successful operation"
 
-  /login:
-    get:  # TODO: all?
-      tags:
-        - "Account"
-      summary: ""
-      description: ""
-      operationId: ""
-      parameters:
-      responses:
-        200:
-          description: "Successful operation"
-
-  /logout:
-    get:  # TODO: all?
-      tags:
-        - "Account"
-      summary: ""
-      description: ""
-      operationId: ""
-      parameters:
-      responses:
-        200:
-          description: "Successful operation"
-
-  /newPlayer:
-    get:  # TODO: all?
-      tags:
-        - "Account"
-      summary: ""
-      description: ""
-      operationId: ""
-      parameters:
-      responses:
-        200:
-          description: "Successful operation"
-
-  /players:
+  /tables:
     get:
       tags:
-        - "Players"
-      summary: "Get all players"
-      description: "Get all players in an array once."
+        - "Tables"
+      summary: "Get all table records"
+      description: "Get table records of all table in an array once."
       operationId: ""  # TODO:
       responses:
         200:
@@ -124,267 +82,45 @@ paths:
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/Player"
-        404:
-          description: "Player not found"
+              $ref: "#/definitions/TableRecord"
 
-  /players/{playerID}:
+  /tables/{tableID}:
     get:
       tags:
-        - "Players"
-      summary: "Get a player by ID"
-      description: "Get a player by its player ID."
+        - "Tables"
+      summary: "Get a table record by ID"
+      description: "Get a table record by its table ID."
       operationId: ""  # TODO:
       parameters:
-        - $ref: "#/parameters/playerID"
+        - $ref: "#/parameters/tableID"
       responses:
         200:
           description: "Successful operation"
           schema:
-            $ref: "#/definitions/Player"
-        400:
-          description: "Invalid player ID supplied"
+            $ref: "#/definitions/TableRecord"
         404:
-          description: "Player not found"
-
-  /players/{playerID}/{customVerb}:
-    get:  # TODO: all?
-      tags:
-        - "Players"
-      summary: ""
-      description: ""
-      operationId: ""
-      parameters:
-        - $ref: "#/parameters/playerID"
-        - $ref: "#/parameters/customVerb"
-      responses:
-        200:
-          description: "Successful operation"
-
-  /me:
-    get:
-      tags:
-        - "Me"
-      summary: "Get myself as a player"
-      description: "Get a player who is the client."
-      operationId: ""  # TODO:
-      parameters:  # TODO: Session?
-      responses:
-        200:
-          description: "Successful operation"
-          schema:
-            $ref: "#/definitions/Player"
-        400:
-          description: "Invalid player ID supplied"
-        404:
-          description: "Player not found"
-    put:
-      tags:
-        - "Me"
-      summary: "Update myself as a player"
-      description: "Update a player who is the client."
-      operationId: ""  # TODO:
-      parameters:  # TODO: Session?
-        - name: "body"
-          description: "The data of myself to be updated"
-          required: true
-          in: "body"
-          schema:
-            $ref: "#/definitions/Player"
-      responses:
-        200:
-          description: "Successful operation"
-        400:
-          description: "Invalid player ID supplied"
-        404:
-          description: "Player not found"
-
-  /me/stones/{stoneID}:
-    get:
-      tags:
-        - "Me"
-      summary: "Get my stone by ID"
-      description: "Get a stone of myself by its stone ID."
-      operationId: ""  # TODO:
-      parameters:  # TODO: Session?
-        - $ref: "#/parameters/stoneID"
-      responses:
-        200:
-          description: "Successful operation"
-          schema:
-            $ref: "#/definitions/Stone"
-        400:
-          description: "Invalid player or stone ID supplied"
-        404:
-          description: "Player or stone not found"
-
-  /me/stones/{stoneID}/{customVerb}:
-    get:  # TODO: all?
-      tags:
-        - "Me"
-      summary: ""
-      description: ""
-      operationId: ""
-      parameters:
-        - $ref: "#/parameters/stoneID"
-        - $ref: "#/parameters/customVerb"
-      responses:
-        200:
-          description: "Successful operation"
+          description: "Table not found"
 
 
 definitions:
-  AbilityType:
-    type: "integer"
-    format: "int32"
-
-  Ability:
-    type: "object"
+  TableRecord:
+    type: "object"  
     properties:
-      HP:
-        $ref: "#/definitions/AbilityType"
-      MSH:
+      tableID:
         type: "integer"
         format: "int32"
-        minimum: 0
-        maximum: 100
-      AGI:
-        $ref: "#/definitions/AbilityType"
-      ACC:
-        $ref: "#/definitions/AbilityType"
-      ATU:
-        $ref: "#/definitions/AbilityType"
-      INT:
-        $ref: "#/definitions/AbilityType"
-      LUK:
-        $ref: "#/definitions/AbilityType"
-
-  Stone:
-    type: "object"
-    properties:
-      stoneIndex:
-        type: "integer"
-        format: "int32"
-      stoneType:
-        type: "integer"
-        format: "int32"
-      stoneName:
-        type: "string"
-      training:
-        type: "string"
-      trainingStartTime:
-        type: "string"
-        format: "date-time"
-      LV:
-        type: "integer"
-        format: "int32"
-      EXP:
-        type: "integer"
-        format: "int32"
-      ability:
-        $ref: "#/definitions/Ability"
-      incarnationPoints:
-        $ref: "#/definitions/Ability"
-
-  Player:
-    type: "object"
-    properties:
-      playerID:  # TODO: Be unique
-        type: "string"
-        maxLength: 20
-      bio:
-        type: "string"
-        maxLength: 100
-      stones:
-        type: "array"
-        items:
-          $ref: "#/definitions/Stone"
-      battleRecord:  # TODO: Be `ObjectId`
-        type: "objectID"
-      storyProgress:
-        type: "integer"
-        format: "int32"
-
-  NumberIDType:
-    type: "integer"
-    format: "int32"
-    minimum: 0
-
-  UnixTimeStamp:
-    type: "integer"
-    format: "int64"
-    minimum: 0
-
-  HitRecord:
-    type: "object"
-    properties:
-      receiverID:
-        $ref: "#/definitions/NumberIDType"
-      receiverSkillID:
-        $ref: "#/definitions/NumberIDType"
-      receiverHPChange:
-        type: "integer"
-        format: "int32"
-      casterHPChange:
-        type: "integer"
-        format: "int32"
-      isSkillCritical:
+      isOccupied:
         type: "boolean"
-
-  ActionRecord:
-    type: "object"
-    properties:
-      timeStamp:
-        $ref: "#/definitions/UnixTimeStamp"
-      caster:
-        $ref: "#/definitions/NumberIDType"
-      ownerRole:
-        $ref: "#/definitions/NumberIDType"
-      casterSkillID:
-        $ref: "#/definitions/NumberIDType"
-      hits:
-        type: "array"
-        items:
-          $ref: "#/definitions/HitRecord"
-
-  BattleRecord:
-    type: "object"
-    properties:
-      attackerPlayer:
-        $ref: "#/definitions/Player"
-      defenderPlayer:
-        $ref: "#/definitions/Player"
-      actions:
-        type: "array"
-        items:
-          $ref: "#/definitions/ActionRecord"
 
 
 parameters:
-  stoneID:
-    name: "stoneID"
-    description: "The ID of the stone"
+  tableID:
+    name: "tableID"
+    description: "The ID of the table."
     required: true
     in: "path"
     type: "integer"
     format: "int32"
-
-  playerID:
-    name: "playerID"
-    description: "The ID of the player"
-    required: true
-    in: "path"
-    type: "integer"
-    format: "int32"
-
-  customVerb:
-    name: "customVerb"
-    description: "The custom verb to do"
-    required: true
-    in: "path"
-    type: "string"
-    format: "uppercase"
-    pattern: "^[A-Z]+$"
 
 
 responses:  # TODO:
@@ -393,6 +129,6 @@ responses:  # TODO:
 securityDefinitions:
   DefaultSecurity:
     name: "authorization-key"
-    description: "The default security by the API key, which is just a decoration actually."
+    description: "The default security by the API key, which is just a decoration actually now."
     in: "header"
     type: "apiKey"

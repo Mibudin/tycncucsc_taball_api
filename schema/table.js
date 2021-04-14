@@ -3,12 +3,12 @@
 const SchemaObject = require("schema-object");
 
 
-const TableSchema = new SchemaObject(
+const TableRecordSchema = new SchemaObject(
     {
         tableID: Number,
-        isUsed: Boolean
+        isOccupied: Boolean
     }
 );
 
 
-module.exports = TableSchema;
+module.exports = TableRecordSchema;
