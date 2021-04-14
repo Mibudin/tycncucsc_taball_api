@@ -1,0 +1,515 @@
+/**
+ * The Swagger page with the dark theme.
+ * From the Internet and the imagination
+ * 
+ * Author: Mibudin
+ * 
+ * References:
+ * - Default Swagger CSS files.
+ * - https://swagger.io/blog/api-documentation/building-a-documentation-portal-for-multiple-apis/
+ * - https://material.io/design/color/dark-theme.html
+ */
+
+
+/* SELF ADD */
+html
+{
+    height: 100%;
+}
+
+/* SELF ADD */
+body
+{
+    display: block;
+    height: 100%;
+    min-height: 100%;
+}
+
+/* SELF ADD */
+body > .swagger-ui
+{
+    min-height: 100%;
+    padding: 20px 0;
+}
+
+/* SELF ADD */
+.swagger-container .swagger-ui
+{
+    width: 75vw;
+    margin: 0 auto;
+}
+
+/* SELF ADD */
+.swagger-container::after
+{
+    content: "";
+    display: block;
+    padding-bottom: 30px;
+}
+
+/* SELF ADD */
+.swagger-ui button.expand-operation
+{
+    fill: #E1E1E1;
+}
+
+/* SELF ADD */
+.swagger-ui button.authorization__btn
+{
+    fill: #49cc90;
+}
+
+/* SELF ADD */
+/* .swagger-ui select
+{
+    background: #0B1D33;
+    color: #E1E1E1;
+} */
+
+.swagger-ui
+{
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* width: 100vh; */
+    background-color: #121212;
+}
+
+.swagger-ui .info
+{
+    /* background-color: #E1E1E1; */
+    background-color: #2D2D2D;
+    padding: 50px;
+    /* border-bottom: 5px solid #B32727; */
+    /* font-family:  */
+}
+
+/* SELF ADD */
+.swagger-ui .info .title
+{
+    color: #B0B0B0;
+}
+
+/* SELF ADD */
+.swagger-ui .info .title small pre
+{
+    color: #E1E1E1;
+}
+
+/* SELF ADD */
+.swagger-ui .info .base-url
+{
+    color: #B0B0B0;
+}
+
+/* SELF ADD */
+.swagger-ui .info .description
+{
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.swagger-ui .info .description p
+{
+    /* color: black; */
+    color: #E1E1E1;
+}
+
+.swagger-ui .info .description .markdown
+{
+    /* color: black; */
+    color: #E1E1E1;
+}
+
+/* SELF ADD */
+.swagger-ui .info .description::after
+{
+    display: block;
+    margin: 0 30px 0 auto;
+    /* content: url("./favicon-pixel-xmas-smooth.ico"); */
+}
+
+/* SELF ADD */
+/* .swagger-ui .scheme-container .schemes > label select
+{
+    color: #D4BE7D;
+    background-color: #1D1D1D;
+    border-color: #D4BE7D;
+    fill: #D4BE7D;
+} */
+
+/* SELF ADD */
+.swagger-ui select
+{
+    color: #D4BE7D;
+    background-color: #1D1D1D;
+    border-color: #D4BE7D;
+}
+
+/* SELF ADD */
+.swagger-ui label
+{
+    color: #E1E1E1;
+}
+
+/* SELF ADD */
+.swagger-ui code
+{
+    color: #E1E1E1;
+}
+
+/* SELF ADD */
+.swagger-ui .btn
+{
+    color: #E1E1E1;
+    border-color: #E1E1E1;
+}
+
+.swagger-ui .scheme-container
+{
+    background-color: rgba(1, 1, 1, 0);
+    box-shadow: 0 0 0 0;
+}
+
+.swagger-ui .schemes-title
+{
+    color: #D4BE7D;
+}
+
+.swagger-ui .opblock-tag
+{
+    color: #E1E1E1;
+    /* text-transform: uppercase; */
+    letter-spacing: .1em;
+    border-bottom: 1px solid #D4BE7D;
+}
+
+.swagger-ui .opblock-tag small
+{
+    color: #E1E1E1;
+    padding: 0 15px;
+}
+
+/* SELF ADD */
+.swagger-ui .opblock-tag-section
+{
+    background: #1F1F1F;
+    margin: 30px 0;
+    padding: 20px 50px;
+}
+
+.swagger-ui .opblock
+{
+    /* border-radius: 0; */
+    margin: 15px 0;
+}
+
+/* SELF ADD */
+/* .swagger-ui .opblock:first-of-type
+{
+    border-radius: 0;
+} */
+
+/* SELF ADD */
+/* .swagger-ui .opblock .opblock-summary-method
+{
+    color: #E1E1E1;
+} */
+
+/* SELF ADD */
+.swagger-ui .opblock .opblock-section-header
+{
+    background: #1F1F1FC0;
+}
+
+/* SELF ADD */
+.swagger-ui .opblock .opblock-section-header h4
+{
+    color: #E1E1E1;
+}
+
+/* SELF ADD */
+/* .swagger-ui .opblock .opblock-section-header .try-out .try-out__btn
+{
+    color: #E1E1E1;
+    border-color: #E1E1E1;
+} */
+
+/* SELF ADD */
+.swagger-ui .opblock .opblock-section-header > label > span
+{
+    color: #B0B0B0;
+}
+
+/* SELF ADD */
+/* .swagger-ui .opblock .opblock-summary-method
+{
+    letter-spacing: 0.15em;
+} */
+
+.swagger-ui .opblock .opblock-summary-path
+{
+    color: #E1E1E1;
+    letter-spacing: 0.07em;
+}
+
+.swagger-ui .opblock .opblock-summary-description
+{
+    text-align: right;
+    color: #B0B0B0;
+}
+
+/* SELF ADD */
+.swagger-ui .opblock .opblock-description-wrapper p
+{
+    color: #B0B0B0;
+}
+
+/* SELF ADD */
+.swagger-ui .responses-inner h4, .swagger-ui .responses-inner h5
+{
+    color: #B0B0B0;
+}
+
+/* SELF ADD */
+.swagger-ui .opblock .response
+{
+    color: #E1E1E1;
+}
+
+/* SELF ADD */
+.swagger-ui .response .response-col_status
+{
+    color: #B0B0B0;
+}
+
+/* SELF ADD */
+.swagger-ui .tab .tablinks
+{
+    color: #B0B0B0;
+}
+
+/* SELF ADD */
+.swagger-ui .tab li.active {
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+/* SELF ADD */
+.swagger-ui .tab .tabitem::after
+{
+    background: #B0B0B0 !important;
+}
+
+.swagger-ui .markdown
+{
+    color: #E1E1E1;
+}
+
+.swagger-ui .markdown p
+{
+    color: #E1E1E1;
+}
+
+.swagger-ui .table-container
+{
+    color: #E1E1E1;
+}
+
+.swagger-ui .response-col_status
+{
+    color: #E1E1E1;
+}
+
+.swagger-ui .responses-header td
+{
+    color: #E1E1E1;
+}
+
+.swagger-ui .table-container th
+{
+    color: #E1E1E1;
+}
+
+.swagger-ui .table-container .parameter__name
+{
+    color: #E1E1E1;
+}
+
+/* SELF ADD */
+.swagger-ui .table-container .parameter__type
+{
+    color: #7070D0;
+}
+
+/* SELF ADD */
+.swagger-ui .table-container .parameter__type .prop-format
+{
+    color: #d3bc55;
+}
+
+/* SELF ADD */
+.swagger-ui .table-container .parameter__in
+{
+    color: #B0B0B0;
+}
+
+/* SELF ADD */
+.swagger-ui input
+{
+    color: #E1E1E1;
+    background: #1F1F1F !important;
+}
+
+.swagger-ui section.models
+{
+    border: 1px solid #D4BE7D;
+    /* border-radius: 0; */
+    background: #1F1F1F;
+    padding: 20px 50px 25px 50px !important;
+}
+
+/* SELF ADD */
+.swagger-ui section.models.is-open
+{
+    padding: 20px 50px !important;
+}
+
+.swagger-ui section.models h4
+{
+    color: #E1E1E1;
+    font-size: 24px;
+    letter-spacing: .1em;
+    border-bottom: 1px solid #D4BE7D;
+}
+
+/* SELF ADD */
+.swagger-ui section.models.is-open h4
+{
+    margin: 0 0 20px;
+    border-bottom: 1px solid #D4BE7D;
+}
+
+.swagger-ui section.models .model-container
+{
+    background-color: #2D2D2D;
+    /* border-radius: 0; */
+    margin: 15px 0;
+}
+
+/* SELF ADD */
+.swagger-ui section.models .model-container:first-of-type
+{
+    margin: 15px 0;
+}
+
+/* SELF ADD */
+.swagger-ui section.models .model-container:last-of-type
+{
+    margin: 15px 0;
+}
+
+.swagger-ui section.models .model-container:hover
+{
+    background-color: #2D2D2D;
+}
+
+/* SELF ADD */
+.swagger-ui .model
+{
+    color: #B0B0B0;
+    font-size: 14px;
+    letter-spacing: 0.07em;
+}
+
+/* SELF ADD */
+.swagger-ui .model-title
+{
+    font-family: monospace;
+    color: #E1E1E1 !important;
+    font-size: 14px;
+}
+
+/* SELF ADD */
+.swagger-ui .model .property.primitive
+{
+    color: #909090;
+}
+
+/* SELF ADD */
+.swagger-ui table.model tr.property-row td:first-child
+{
+    padding-right: .5em;
+}
+
+/* SELF ADD */
+.swagger-ui .prop-type
+{
+    color: #7070D0;
+}
+
+/* SELF ADD */
+.swagger-ui .prop-name
+{
+    color: #E75A5A;
+}
+
+/* SELF ADD */
+.swagger-ui .prop-format
+{
+    color: #d3bc55;
+}
+
+/* SELF ADD */
+.swagger-ui section.models svg
+{
+    fill: #E1E1E1;
+}
+
+/* SELF ADD */
+/* .swagger-ui section.models::after
+{
+    content: "";
+    display: block;
+    margin-bottom: 30px;
+} */
+
+/* SELF ADD */
+.swagger-ui .modal-ux
+{
+    background-color: #1F1F1F !important;
+    border: none !important;
+}
+
+.swagger-ui .modal-ux .modal-ux-header
+{
+    background-color: #2D2D2D !important;
+    border: none;
+    border-radius: 4px 4px 0 0;
+    letter-spacing: .1em;
+}
+
+/* SELF ADD */
+.swagger-ui .dialog-ux .modal-ux-header h3
+{
+    color: #E1E1E1;
+}
+
+/* SELF ADD */
+.swagger-ui .dialog-ux .modal-ux-content h4
+{
+    color: #E1E1E1;
+}
+
+/* SELF ADD */
+.swagger-ui .dialog-ux .modal-ux-content h6
+{
+    color: #49cc90;
+}
+
+/* SELF ADD */
+.swagger-ui .dialog-ux .modal-ux-content p
+{
+    color: #E1E1E1;
+}

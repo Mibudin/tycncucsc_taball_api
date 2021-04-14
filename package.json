@@ -10,12 +10,12 @@
   "author": "Taball",
   "license": "ISC",
   "devDependencies": {
-    "mongoose-data-faker": "^0.1.2",
+    "js-yaml": "^4.0.0",
     "nodemon": "^2.0.7",
     "swagger-ui-express": "^4.1.6"
   },
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^5.12.2"
+    "schema-object": "^4.0.11"
   }
 }
