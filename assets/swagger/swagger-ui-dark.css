@@ -167,6 +167,23 @@ body > .swagger-ui
     border-color: #E1E1E1;
 }
 
+/* SELF ADD */
+.swagger-ui .loading-container .loading:before
+{
+    border: 3px solid;
+    border-top-color: #707070;
+    border-left-color: #909090;
+    border-bottom-color: #B0B0B0;
+    border-right-color: #E1E1E1;
+}
+
+/* SELF ADD */
+.swagger-ui .loading-container .loading:after
+{
+    font-size: 8px;
+    color: #E1E1E1;
+}
+
 .swagger-ui .scheme-container
 {
     background-color: rgba(1, 1, 1, 0);

@@ -27,10 +27,6 @@ app.use("/assets", Express.static("assets"));
  * Serve the API.
  */
 app.use("/api/v0", require("./routes/api"));
-app.use('/api/v0', (err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send("500 Internal Server Error: Something broke!");
-});
 
 /**
  * Express APP use: `/api-docs/v0`, `/api-docs-dark/v0`

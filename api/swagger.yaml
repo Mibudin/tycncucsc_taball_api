@@ -35,7 +35,8 @@ basePath: "/api/v0"
 
 
 security:
-  - DefaultSecurity: []
+  - APIUserID: []
+    APIUserKey: []
 
 
 schemes:
@@ -64,7 +65,6 @@ paths:
       summary: ""
       description: ""
       operationId: ""
-      parameters:
       responses:
         200:
           description: "Successful operation"
@@ -123,12 +123,17 @@ parameters:
     format: "int32"
 
 
-responses:  # TODO:
+responses:  # TODO: 401, 404
 
 
 securityDefinitions:
-  DefaultSecurity:
+  APIUserID:
+    name: "authorization-id"
+    description: "The ID of the user to access the API."
+    in: "header"
+    type: "apiKey"
+  APIUserKey:
     name: "authorization-key"
-    description: "The default security by the API key, which is just a decoration actually now."
+    description: "The key of the user to access the API."
     in: "header"
     type: "apiKey"
