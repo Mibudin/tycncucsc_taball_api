@@ -168,6 +168,12 @@ body > .swagger-ui
 }
 
 /* SELF ADD */
+.swagger-ui .auth-btn-wrapper .button
+{
+    margin-right: 1rem;
+}
+
+/* SELF ADD */
 .swagger-ui .loading-container .loading:before
 {
     border: 3px solid;
@@ -182,6 +188,26 @@ body > .swagger-ui
 {
     font-size: 8px;
     color: #E1E1E1;
+}
+
+/* SELF ADD */
+.swagger-ui input
+{
+    line-height: 1;
+}
+
+/* SELF ADD */
+.swagger-ui textarea
+{
+    resize: vertical;
+    min-height: 200px;
+    border: 2px solid #909090;
+    background: hsla(0, 0%, 10%, 0.8);
+    color: #E1E1E1;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 1.5;
 }
 
 .swagger-ui .scheme-container

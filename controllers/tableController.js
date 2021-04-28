@@ -1,5 +1,7 @@
 "use strict";
 
+const _ = require("underscore");
+
 const TableRecordSchema = require("../schema/table");
 
 
@@ -9,7 +11,7 @@ let tableRecords = [];
 
 function getTableRecords()
 {
-    return JSON.parse(JSON.stringify(tableRecords));
+    return _.extend({}, tableRecords);
 }
 
 /**
@@ -25,7 +27,7 @@ function getTableRecord(tableID)
         return undefined;
     }
 
-    return JSON.parse(JSON.stringify(tableRecord));
+    return _.extend({}, tableRecord);
 }
 
 /**
@@ -35,7 +37,7 @@ function getTableRecord(tableID)
 function initTableRecords(_tableAmount)
 {
     tableAmount = _tableAmount;
-    tableRecords = new Array(tableAmount);
+    tableRecords = new Array(tableAmount - 1);
 
     for(let i = 0; i < tableAmount; i++)
     {
@@ -50,12 +52,44 @@ function initTableRecords(_tableAmount)
 
 /**
  * 
- * @param {Number} tableID 
- * @param {Boolean} isOccupied 
+ * @param {TableRecord[]} _tableRecord
  */
-function setTableRecordsUsage(tableID, isOccupied)
+function setTableRecordsUsage(_tableRecords)
 {
-    tableRecords.find(element => element.tableID === tableID).isOccupied = isOccupied;
+    for(let i = 0; i < _tableRecords.length; i++)
+    {
+        _tableRecords[i] = new TableRecordSchema(_tableRecords[i]);
+    }
+    _tableRecords.sort((a, b) => a.tableID - b.tableID);
+
+    for(let i = 0, j = 0; i < tableRecords.length && j < _tableRecords.length;)
+    {
+        if(tableRecords[i].tableID === _tableRecords[j].tableID &&
+            _tableRecords[j].isOccupied !== undefined)
+        {
+            tableRecords[i].isOccupied = _tableRecords[j].isOccupied;
+            i++, j++;
+        }
+        else if(tableRecords[i].tableID < _tableRecords[j].tableID) i++;
+        else j++;
+    }
+}
+
+/**
+ * 
+ * @param {TableRecord} _tableRecord
+ */
+function setTableRecordUsage(_tableRecord)
+{
+    _tableRecord = new TableRecordSchema(_tableRecord);
+    let tableRecord = tableRecords.find(element => element.tableID === _tableRecord.tableID);
+    if(tableRecord === undefined || _tableRecord.isOccupied === undefined)
+    {
+        return undefined;
+    }
+
+    tableRecord.isOccupied = _tableRecord.isOccupied;
+    return tableRecord.tableID;
 }
 
 
@@ -64,5 +98,6 @@ module.exports =
     getTableRecords: getTableRecords,
     getTableRecord: getTableRecord,
     initTableRecords: initTableRecords,
-    setTableRecordsUsage: setTableRecordsUsage
+    setTableRecordsUsage: setTableRecordsUsage,
+    setTableRecordUsage: setTableRecordUsage
 };

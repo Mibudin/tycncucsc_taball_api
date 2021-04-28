@@ -74,7 +74,7 @@ paths:
       tags:
         - "Tables"
       summary: "Get all table records"
-      description: "Get table records of all table in an array once."
+      description: "Get table records of all tables in an array once."
       operationId: ""  # TODO:
       responses:
         200:
@@ -83,6 +83,18 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/TableRecord"
+
+    patch:
+      tags:
+        - "Tables"
+      summary: "Patch table records"
+      description: "Patch table records of some tables in an array once."
+      operationId: ""  # TODO:
+      parameters:
+        - $ref: "#/parameters/tableRecords"
+      responses:
+        200:
+          description: "Successful operation"
 
   /tables/{tableID}:
     get:
@@ -93,6 +105,22 @@ paths:
       operationId: ""  # TODO:
       parameters:
         - $ref: "#/parameters/tableID"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            $ref: "#/definitions/TableRecord"
+        404:
+          description: "Table not found"
+
+    patch:
+      tags:
+        - "Tables"
+      summary: "Patch a table record by ID"
+      description: "Patch a table record by its table ID."
+      operationId: ""  # TODO:
+      parameters:
+        - $ref: "#/parameters/tableRecord"
       responses:
         200:
           description: "Successful operation"
@@ -122,6 +150,24 @@ parameters:
     type: "integer"
     format: "int32"
 
+  tableRecord:
+    name: "tableRecord"
+    description: "The record of the table."
+    required: true
+    in: "body"
+    schema:
+      $ref: "#/definitions/TableRecord"
+  
+  tableRecords:
+    name: "tableRecords"
+    description: "The records of the tables."
+    required: true
+    in: "body"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/TableRecord"
+
 
 responses:  # TODO: 401, 404
 
@@ -132,6 +178,7 @@ securityDefinitions:
     description: "The ID of the user to access the API."
     in: "header"
     type: "apiKey"
+
   APIUserKey:
     name: "authorization-key"
     description: "The key of the user to access the API."

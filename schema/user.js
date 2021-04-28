@@ -7,6 +7,9 @@ const UserRecordSchema = new SchemaObject(
     {
         userName: String,
         userID: String
+    },
+    {
+        strict: true
     }
 );
 

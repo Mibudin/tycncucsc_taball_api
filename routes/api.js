@@ -3,6 +3,8 @@
 const Express = require("express");
 const router = Express.Router();
 
+const _ = require("underscore");
+
 const userController = require("../controllers/userController");
 const tableController = require("../controllers/tableController");
 
@@ -46,12 +48,6 @@ router.use((req, res, next) => {
     }
 });
 
-router.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send("500 Internal Server Error: Something broke!");
-});
-
-
 /**
  * `/`
  * General
@@ -68,6 +64,10 @@ router.route("/")
 router.route("/tables")
     .get((req, res) => {
         res.json(tableController.getTableRecords());
+    })
+    .patch((req, res) => {
+        tableController.setTableRecordsUsage(_.extend([], req.body));
+        res.status(200).send("200 OK");
     });
 
 router.route("/tables/:tableID")
@@ -79,6 +79,14 @@ router.route("/tables/:tableID")
                 .send("404 Not Found: The table record with the given `tableID` was not found.");
         }
         res.json(tableRecord);
+    })
+    .patch((req, res) => {
+        if(tableController.setTableRecordUsage(_.extend({}, req.body)) === undefined)
+        {
+            res.status(404)
+                .send("404 Not Found: The table record with the given `tableID` was not found.");
+        }
+        res.status(200).send("200 OK");
     });
 
 /**
@@ -93,6 +101,14 @@ router.route("/*")
     .all((req, res) => {
         res.status(404).send("404 Not Found");
     });
+
+/**
+ * Error handling
+ */
+router.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send("500 Internal Server Error: Something broke!");
+});
 
 
 module.exports = router;

@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "schema-object": "^4.0.11"
+    "schema-object": "^4.0.11",
+    "underscore": "^1.13.1"
   }
 }

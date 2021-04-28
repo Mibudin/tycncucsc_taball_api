@@ -7,6 +7,9 @@ const TableRecordSchema = new SchemaObject(
     {
         tableID: Number,
         isOccupied: Boolean
+    },
+    {
+        strict: true
     }
 );
 

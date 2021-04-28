@@ -3,11 +3,13 @@
 const Express = require("express");
 const app = Express();
 
+const tablesNum = 10;
+
 
 /**
  * Initialize records
  */
-require("./controllers/tableController").initTableRecords(10);
+require("./controllers/tableController").initTableRecords(tablesNum);
 
 /**
  * Express APP use: body parsing
