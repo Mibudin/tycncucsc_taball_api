@@ -9,7 +9,7 @@ const tablesNum = 10;
 /**
  * Initialize records
  */
-require("./controllers/tableController").initTableRecords(tablesNum);
+// require("./controllers/tableController").initTableRecords(tablesNum);
 
 /**
  * Express APP use: body parsing
@@ -28,7 +28,7 @@ app.use("/assets", Express.static("assets"));
  * Express APP use: `/api/v0`
  * Serve the API.
  */
-app.use("/api/v0", require("./routes/api"));
+app.use("/api/v0", require("./routes/api").initRouter(tablesNum));
 
 /**
  * Express APP use: `/api-docs/v0`, `/api-docs-dark/v0`

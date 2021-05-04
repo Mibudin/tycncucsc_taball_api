@@ -21,12 +21,12 @@ function authUsers(id, key)
     if(key === user.userKey)
     {
         return new UserRecordSchema(
-            {userName: user.userName, userID: user.userID});
+            {userName: user.userName, userID: user.userID}).toObject();
     }
     else
     {
         return new UserRecordSchema(
-            {userName: undefined, userID: user.userID});
+            {userName: undefined, userID: user.userID}).toObject();
     }
 }
 

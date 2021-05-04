@@ -120,6 +120,7 @@ paths:
       description: "Patch a table record by its table ID."
       operationId: ""  # TODO:
       parameters:
+        - $ref: "#/parameters/tableID"
         - $ref: "#/parameters/tableRecord"
       responses:
         200:

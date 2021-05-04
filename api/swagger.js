@@ -6,7 +6,7 @@
  */
 function useSwagger(app)
 {
-    const swaggerUi = require("swagger-ui-express");
+    const swaggerUI = require("swagger-ui-express");
     const swaggerDocument = require("js-yaml").load(require("fs").readFileSync("./api/swagger.yaml", "utf8"));
 
     /**
@@ -22,7 +22,7 @@ function useSwagger(app)
         // customfavIcon: "/assets/swagger/favicon-real.ico",
         customSiteTitle: "~TYCNCUCSC TABALL API~"
     };
-    app.use("/api-docs/v0", swaggerUi.serve, swaggerUi.setup(swaggerDocument, swaggerUiOptions));
+    app.use("/api-docs/v0", swaggerUI.serve, swaggerUI.setup(swaggerDocument, swaggerUiOptions));
     
     /**
      * Express APP use: `/api-docs-dark/v0`
@@ -37,7 +37,7 @@ function useSwagger(app)
         // customfavIcon: "/assets/swagger/favicon-real.ico",
         customSiteTitle: "~TYCNCUCSC TABALL API~"
     };
-    app.use("/api-docs-dark/v0", swaggerUi.serve, swaggerUi.setup(swaggerDocument, swaggerUiOptionsDark));
+    app.use("/api-docs-dark/v0", swaggerUI.serve, swaggerUI.setup(swaggerDocument, swaggerUiOptionsDark));
 }
 
 
