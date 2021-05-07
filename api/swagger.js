@@ -2,7 +2,7 @@
 
 /**
  * 
- * @param {Express} app 
+ * @param {"Express"} app 
  */
 function useSwagger(app)
 {

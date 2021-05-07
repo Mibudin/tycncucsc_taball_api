@@ -39,11 +39,13 @@ router.use((req, res, next) => {
     {
         console.log("  User: \"" + id + "\" (Unauthorized)");
         res.status(401).send("401 Unauthorized: User not found!");
+        return;
     }
     else if(userData.userName === undefined)
     {
         console.log("  User: \"" + id + "\" (Unauthorized)");
         res.status(401).send("401 Unauthorized: Wrong authorization key given!");
+        return;
     }
     else
     {
@@ -59,7 +61,7 @@ router.use((req, res, next) => {
  */
 router.route("/")
     .all((req, res) => {
-        res.send("~TYCNCUCSC TABALL API~");
+        res.status(200).send("~TYCNCUCSC TABALL API~");
     });
 
 /**
@@ -68,11 +70,11 @@ router.route("/")
  */
 router.route("/tables")
     .get((req, res) => {
-        res.json(tableController.getTableRecords());
+        res.status(200).json(tableController.getTableRecords());
     })
     .patch((req, res) => {
         tableController.patchTableRecords(_.extend([], req.body));
-        res.status(200).send("200 OK");
+        res.status(200).send();
     });
 
 router.route("/tables/:tableID")
@@ -94,7 +96,7 @@ router.route("/tables/:tableID")
                       "Or, the given `tableID` is not equal to the given `tableRecord`\'s.");
             return;
         }
-        res.status(200).send("200 OK");
+        res.status(200).send();
     });
 
 /**
@@ -121,16 +123,11 @@ router.use((err, req, res, next) => {
 
 /**
  * Initialize the router
- * @param {Number} tablesNum 
+ * @param {number} tablesNum 
  * @returns The router
  */
 function initRouter(tablesNum)
 {
-    // let a = {x: 1, y: 2};
-    // let b = {y: 3, z: 4};
-    // console.log(_.extend(a, b));
-    // console.log(a);
-
     tableController.initTableRecords(tablesNum);
     return router;
 }

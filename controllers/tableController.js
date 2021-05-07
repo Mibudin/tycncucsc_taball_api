@@ -16,7 +16,7 @@ function getTableRecords()
 
 /**
  * 
- * @param {Number} tableID 
+ * @param {number} tableID 
  * @returns 
  */
 function getTableRecord(tableID)
@@ -29,7 +29,7 @@ function getTableRecord(tableID)
 
 /**
  * 
- * @param {Number} _tableAmount 
+ * @param {number} _tableAmount 
  */
 function initTableRecords(_tableAmount)
 {
@@ -49,7 +49,7 @@ function initTableRecords(_tableAmount)
 
 /**
  * 
- * @param {TableRecord[]} _tableRecord
+ * @param {"TableRecord"[]} _tableRecords
  */
 function patchTableRecords(_tableRecords)
 {
@@ -74,8 +74,8 @@ function patchTableRecords(_tableRecords)
 
 /**
  * 
- * @param {Number} tableID
- * @param {TableRecord} _tableRecord
+ * @param {number} tableID
+ * @param {"TableRecord"} _tableRecord
  */
 function patchTableRecord(tableID, _tableRecord)
 {
@@ -84,16 +84,29 @@ function patchTableRecord(tableID, _tableRecord)
     if(_tableRecord.tableID === undefined || tableID !== _tableRecord.tableID) return undefined;
 
     let tableRecord = undefined;
-    let s = 0, m, e = tableRecords.length - 1;
-    while(s <= e)
+
+    // let s = 0, m, e = tableRecords.length - 1;
+    // while(s <= e)
+    // {
+    //     m = parseInt(s + (e - s) / 2);
+    //     tableRecord = tableRecords[m];
+    //          if(tableRecord.tableID < tableID) s = m + 1;
+    //     else if(tableRecord.tableID > tableID) e = m - 1;
+    //     else                                   break;
+    // }
+    // if(s > e || tableRecord === undefined) return undefined;
+
+    // Faster Binary search (maybe)
+    let s = 0, m = 0, e = tableRecords.length;
+    while(s < e)
     {
-        m = parseInt(s + (e - s) / 2);
+        m = parseInt((s + e) / 2);
         tableRecord = tableRecords[m];
              if(tableRecord.tableID < tableID) s = m + 1;
-        else if(tableRecord.tableID > tableID) e = m - 1;
+        else if(tableRecord.tableID > tableID) e = m;
         else                                   break;
     }
-    if(s > e || tableRecord === undefined) return undefined;
+    if(s >= e) return undefined;
 
     _.extend(tableRecord, _tableRecord);
     return tableRecord.tableID;

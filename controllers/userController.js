@@ -7,7 +7,7 @@ const userRecords = require("../data/userRecords.json");
 
 /**
  * 
- * @param {String} id 
+ * @param {string} id 
  * @param {string} key 
  * @returns 
  */
