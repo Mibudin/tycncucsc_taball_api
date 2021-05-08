@@ -16,8 +16,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "js-yaml": "^4.0.0",
-    "mongodb": "^3.6.6",
-    "mquery": "^3.2.5",
+    "mongodb": "^2.2.19",
     "schema-object": "^4.0.11",
     "underscore": "^1.13.1"
   }
