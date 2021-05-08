@@ -1,0 +1,13 @@
+{
+    "host": "127.0.0.1",
+    "port": 27017,
+    "db":
+    {
+        "name": "example_db",
+        "colles":
+        {
+            "alpha": "example_db_alpha",
+            "beta": "example_db_beta"
+        }
+    }
+}

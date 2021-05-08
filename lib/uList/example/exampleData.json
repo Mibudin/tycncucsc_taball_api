@@ -1,0 +1,67 @@
+{
+    "alpha":
+    [
+        {
+            "id": 1,
+            "name": "alpha_test_1",
+            "doc": "Hello!"
+        },
+        {
+            "id": 2,
+            "name": "alpha_test_2",
+            "doc": "I'm locked in the inner world! HELP ME!!!"
+        }
+    ],
+    "beta":
+    [
+        {
+            "id": 1,
+            "name": "beta_test_1",
+            "realName": "Wfsoaipcremigh",
+            "info":
+            {
+                "status": "mad",
+                "doc": "WTF, why am I in the inner world!?!? The man meditating should know something!!!"
+            }
+        },
+        {
+            "name": "beta_test_2",
+            "info":
+            {
+                "status": "memory lost",
+                "doc": "Losting in the streets, losting in the inner world, losting in my life... What's next?"
+            }
+        },
+        {
+            "id": 3,
+            "name": "BetaTest3",
+            "realName": "ἑωσφόρος",
+            "info":
+            {
+                "status": "smiling",
+                "doc": "The real name of ID 2 is Morning Star."
+            }
+            
+        },
+        {
+            "id": 3,
+            "name": "beta_test_3",
+            "realName": "Lucifer",
+            "info":
+            {
+                "status": "shouting",
+                "doc": "The real name of ID 2 is Satoshi Nakamoto."
+            }
+        },
+        {
+            "id": 4,
+            "name": "beta_test_4",
+            "realName": "THVjaWZlcg==",
+            "info":
+            {
+                "status": "meditating",
+                "doc": "The average person here has name: beta_test_<id>."
+            }
+        }
+    ]
+}
