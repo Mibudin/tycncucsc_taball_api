@@ -3,15 +3,27 @@
 const Express = require("express");
 const app = Express();
 
-const cf = require("./config");
+const CF = require("js-yaml").load(require("fs").readFileSync("./config.yaml", "utf8"));;
 
+const ula = new (require("./lib/uList/UListAsync").UListAsync)(
+    new (require("./lib/uList/UList").UList)(
+        CF.mongo.local.host, CF.mongo.local.port, CF.mongo.db.name));
 
-// (async()=>{  // Async IIFE with lambda
 
 /**
- * Initialize records
+ * Start: Lambda async IIFE
  */
-// require("./controllers/tableController").initTableRecords(tablesNum);
+(async()=>{
+
+/**
+ * Initializa the MongoDB driver.
+ */
+await ula.connectToClient();
+
+/**
+ * Initialize controllers
+ */
+require("./controllers/tableController").initTableRecords(CF.server.cf.tableNum);
 
 /**
  * Express APP use: body parsing
@@ -30,7 +42,7 @@ app.use("/assets", Express.static("assets"));
  * Express APP use: `/api/v0`
  * Serve the API.
  */
-app.use("/api/v0", require("./routes/api").initRouter(cf.server.cf.tableNum));
+app.use("/api/v0", require("./routes/api"));
 
 /**
  * Express APP use: `/api-docs/v0`, `/api-docs-dark/v0`
@@ -42,8 +54,19 @@ require("./api/swagger").useSwagger(app);
 /**
  * Express APP start server
  */
-const port = process.env.PORT || cf.server.lan.port;
+const port = process.env.PORT || CF.server.lan.port;
 app.listen(port);
 console.log("~TYCNCUCSC TABALL API~\nThe server is now started on the port: " + port);
 
-// })();
+
+/**
+ * End: Lambda async IIFE
+ */
+})();
+
+
+module.exports =
+{
+    CF: CF,
+    ula: ula
+};

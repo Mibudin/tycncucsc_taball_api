@@ -123,6 +123,7 @@ router.use((err, req, res, next) => {
 
 /**
  * Initialize the router
+ * @deprecated Controllers initializations all in `app.js`.
  * @param {number} tablesNum 
  * @returns The router
  */
@@ -133,7 +134,7 @@ function initRouter(tablesNum)
 }
 
 
-module.exports =
-{
-    initRouter: initRouter
-};
+module.exports = router;
+// {
+//     initRouter: initRouter
+// };
