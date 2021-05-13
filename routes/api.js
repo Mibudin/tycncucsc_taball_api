@@ -7,6 +7,7 @@ const _ = require("underscore");
 
 const userController = require("../controllers/userController");
 const tableController = require("../controllers/tableController");
+const { response } = require("express");
 
 
 /**
@@ -24,13 +25,15 @@ router.use((req, res, next) => {
     if(id === undefined)
     {
         console.log("  User: undefined (Unauthorized)");
-        res.status(401).send("401 Unauthorized: No authorization ID given!");
+        // res.status(401).send("401 Unauthorized: No authorization ID given!");
+        next();
         return;
     }
-    if(key === undefined)
+    else if(key === undefined)
     {
         console.log("  User: \"" + id + "\" (Unauthorized)");
-        res.status(401).send("401 Unauthorized: No authorization key given!");
+        // res.status(401).send("401 Unauthorized: No authorization key given!");
+        next();
         return;
     }
 
@@ -38,13 +41,15 @@ router.use((req, res, next) => {
     if(userData === undefined)
     {
         console.log("  User: \"" + id + "\" (Unauthorized)");
-        res.status(401).send("401 Unauthorized: User not found!");
+        // res.status(401).send("401 Unauthorized: User not found!");
+        next();
         return;
     }
     else if(userData.userName === undefined)
     {
         console.log("  User: \"" + id + "\" (Unauthorized)");
-        res.status(401).send("401 Unauthorized: Wrong authorization key given!");
+        // res.status(401).send("401 Unauthorized: Wrong authorization key given!");
+        next();
         return;
     }
     else
@@ -52,6 +57,7 @@ router.use((req, res, next) => {
         console.log("  User: \"" + id
                     + "\" (Authorized: \"" + userData.userName +"\")");
         next();
+        return;
     }
 });
 
@@ -62,6 +68,7 @@ router.use((req, res, next) => {
 router.route("/")
     .all((req, res) => {
         res.status(200).send("~TYCNCUCSC TABALL API~");
+        return;
     });
 
 /**
@@ -71,10 +78,12 @@ router.route("/")
 router.route("/tables")
     .get((req, res) => {
         res.status(200).json(tableController.getTableRecords());
+        return;
     })
     .patch((req, res) => {
         tableController.patchTableRecords(_.extend([], req.body));
         res.status(200).send();
+        return;
     });
 
 router.route("/tables/:tableID")
@@ -86,7 +95,8 @@ router.route("/tables/:tableID")
                 .send("404 Not Found: The table record with the given `tableID` was not found.");
             return;
         }
-        res.json(tableRecord);
+        res.status(200).json(tableRecord);
+        return;
     })
     .patch((req, res) => {
         if(tableController.patchTableRecord(Number(req.params.tableID), _.extend({}, req.body)) === undefined)
@@ -97,6 +107,7 @@ router.route("/tables/:tableID")
             return;
         }
         res.status(200).send();
+        return;
     });
 
 /**
@@ -105,11 +116,13 @@ router.route("/tables/:tableID")
 router.route("/brewCoffee")
     .all((req, res) => {
         res.status(418).send("418 I'm a teapot");
+        return;
     });
 
 router.route("/*")
     .all((req, res) => {
         res.status(404).send("404 Not Found");
+        return;
     });
 
 /**
@@ -118,6 +131,7 @@ router.route("/*")
 router.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send("500 Internal Server Error: Something broke!");
+    return;
 });
 
 

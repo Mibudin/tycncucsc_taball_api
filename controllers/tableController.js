@@ -21,8 +21,19 @@ function getTableRecords()
  */
 function getTableRecord(tableID)
 {
-    let tableRecord = tableRecords.find(element => element.tableID === tableID);
-    if(tableRecord === undefined) return undefined;
+    // let tableRecord = tableRecords.find(element => element.tableID === tableID);
+    // if(tableRecord === undefined) return undefined;
+    let tableRecord;
+    let s = 0, m = 0, e = tableRecords.length;
+    while(s < e)
+    {
+        m = parseInt((s + e) / 2);
+        tableRecord = tableRecords[m];
+             if(tableRecord.tableID < tableID) s = m + 1;
+        else if(tableRecord.tableID > tableID) e = m;
+        else                                   break;
+    }
+    if(s >= e) return undefined;
 
     return _.extend({}, tableRecord);
 }
@@ -35,15 +46,18 @@ function initTableRecords(_tableAmount)
 {
     tableAmount = Number(_tableAmount);
     tableRecords = new Array(tableAmount - 1);
+    const nowTime = new Date();
 
     for(let i = 0; i < tableAmount; i++)
     {
-        tableRecords[i] = new TableRecordSchema(
-            {
-                tableID: i,
-                isOccupied: false
-            }
-        ).toObject();
+        // TODO:
+        // tableRecords[i] = new TableRecordSchema(
+        //     {
+        //         tableID: i,
+        //         isOccupied: false
+        //     }
+        // ).toObject();
+        tableRecords[i] = TableRecordSchema.init(i, nowTime).toObject();
     }
 }
 

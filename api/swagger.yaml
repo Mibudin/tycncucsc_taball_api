@@ -147,8 +147,59 @@ definitions:
       tableID:
         type: "integer"
         format: "int32"
+      updateTime:
+        type: "string"
+        format: "date-time"
       isOccupied:
         type: "boolean"
+      distances:
+        typr: "object"
+        properties:
+          a:
+            type: "object"
+            properties:
+              a:
+                type: "integer"
+                format: "int32"
+              b:
+                type: "integer"
+                format: "int32"
+              c:
+                type: "integer"
+                format: "int32"
+              d:
+                type: "integer"
+                format: "int32"
+              e:
+                type: "integer"
+                format: "int32"
+          b:
+            type: "object"
+            properties:
+              a:
+                type: "integer"
+                format: "int32"
+              b:
+                type: "integer"
+                format: "int32"
+              c:
+                type: "integer"
+                format: "int32"
+              d:
+                type: "integer"
+                format: "int32"
+              e:
+                type: "integer"
+                format: "int32"
+      scores:
+        type: "object"
+        properties:
+          a:
+            type: "integer"
+            format: "int32"
+          b:
+            type: "integer"
+            format: "int32"
 
 
 parameters:
