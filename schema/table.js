@@ -6,16 +6,14 @@ const CS = require("./common");
 
 const DistanceSet =
 {
-    a: CS.NumberPos,
-    b: CS.NumberPos,
-    c: CS.NumberPos,
-    d: CS.NumberPos,
-    e: CS.NumberPos
+    left:   CS.NumberPosInt,
+    middle: CS.NumberPosInt,
+    right:  CS.NumberPosInt
 };
 
 const TableRecordSchema = new SchemaObject(
     {
-        tableID: CS.NumberPosInt,
+        tableID:    CS.NumberPosInt,
         updateTime: CS.DateISO,
         isOccupied: {type: Boolean, default: false},
         distances:
@@ -26,7 +24,7 @@ const TableRecordSchema = new SchemaObject(
         scores:
         {
             a: CS.NumberPosInt,
-            B: CS.NumberPosInt
+            b: CS.NumberPosInt
         }
     },
     {
