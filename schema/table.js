@@ -18,7 +18,7 @@ const TableRecordSchema = new SchemaObject(
         isOccupied: {type: Boolean, default: false},
         distances:
         {
-            a: DistanceSet,
+            a: DistanceSet,  // In centimeter
             b: DistanceSet
         },
         scores:

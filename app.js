@@ -26,6 +26,15 @@ await ula.connectToClient();
 require("./controllers/tableController").initTableRecords(CF.server.cf.tableNum);
 
 /**
+ * Express APP set
+ */
+app.set("port", process.env.PORT || CF.server.lan.port);
+app.set("hostName", CF.server.lan.host);
+app.set("views", "views");
+app.set("view engine", "pug");
+// app.set("env", "production");  //Not to send error message to the front end
+
+/**
  * Express APP use: body parsing
  * Serve body part parsing
  */
@@ -50,13 +59,18 @@ app.use("/api/v0", require("./routes/api"));
  */
 require("./api/swagger").useSwagger(app);
 
+/**
+ * Express APP use: `/taball`
+ * Serve the website.
+ */
+app.use("/taball", require("./routes/taball"));
+
 
 /**
  * Express APP start server
  */
-const port = process.env.PORT || CF.server.lan.port;
-app.listen(port);
-console.log("~TYCNCUCSC TABALL API~\nThe server is now started on the port: " + port);
+app.listen(app.get("port"), app.get("hostName"));
+console.log("~TYCNCUCSC TABALL API~\nThe server is now started on the port: " + app.get("port"));
 
 
 /**

@@ -1,0 +1,717 @@
+/* The universal CSS settings */
+
+/********************************/
+/* Basic universal CSS settings */
+/********************************/
+
+/* Basic universal settings */
+.vdors-universal
+{
+    font-family:
+        /* Safari for OS X and iOS (San Francisco) */
+        -apple-system,
+        /* Chrome < 56 for OS X (San Francisco) */
+        "BlinkMacSystemFont",
+        /* Windows */
+        "Segoe UI",
+        /* Android */
+        "Roboto",
+        /* Basic web fallback */
+        "Helvetica Neue", "Helvetica", "Arial",
+        /* Chinese (Traditional) in OS X >= 10.6 */
+        "黑體-繁", "Heiti TC",
+        /* Chinese (Traditional) in OS X < 10.6 */
+        "儷黑 Pro", "LiHei Pro",
+        /* Chinese (Traditional) in Windows */
+        "微軟正黑體", "Microsoft JhengHei",
+        /* Chinese (Traditional) in Linux */
+        "文泉驛正黑", "WenQuanYi Zen Hei",
+        /* Universal */
+        sans-serif,
+        /* Emoji fonts */
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    color: black;
+}
+
+/********************************/
+/* Other simple little settings */
+/********************************/
+
+/* No max height */
+.vdors-mh-none
+{
+    max-height: none !important;
+}
+
+/*******************************/
+/* Customized based on BMD `list group` */
+/*******************************/
+
+/* List item with borders */
+.vdors-list-group-item-bordered
+{
+    border-top: 1px solid rgba(0, 0, 0, 0.26) !important;
+    border-left: 1px solid rgba(0, 0, 0, 0.26) !important;
+    border-right: 1px solid rgba(0, 0, 0, 0.26) !important;
+    padding: 1.5rem !important;
+}
+/* List item with borders (first item) */
+.vdors-list-group-item-bordered:first-child
+{
+    border-top-left-radius: 0.25rem !important;
+    border-top-right-radius: 0.25rem !important;
+}
+/* List item with borders (last item) */
+.vdors-list-group-item-bordered:last-child
+{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.26) !important;
+    border-bottom-left-radius: 0.25rem !important;
+    border-bottom-right-radius: 0.25rem !important;
+}
+/* List item with borders (only item) */
+.vdors-list-group-item-bordered:only-child
+{
+    border: 1px solid rgba(0, 0, 0, 0.26) !important;
+    border-radius: 0.25rem !important;
+}
+
+/******************************************/
+/* Customized based on BMD `form control` */
+/******************************************/
+
+/* Make .form-control green */
+.vdors-form-control-green
+{
+    background-image:
+        linear-gradient(0deg, #4caf50 2px, rgba(63, 81, 181, 0) 0),
+        linear-gradient(0deg, rgba(0, 0, 0, 0.26) 1px, transparent 0) !important;
+}
+
+/************************************/
+/* Customized based on BMD `navbar` */
+/************************************/
+
+/* The navigation bar */
+.vdors-navbar
+{
+    z-index: 900 !important;
+}
+/* The text in the navbar */
+.vdors-navbar-text
+{
+    font-size: 18px !important;
+}
+/* The middle text in the navbar (md) */
+@media screen and (min-width: 768px)
+{
+    .vdors-navbar-text-middle
+    {
+        display: none;
+    }
+}
+/* The right text in the navbar */
+.vdors-navbar-text-right
+{
+    display: none;
+    width: 180px;
+    max-height: 47px;
+}
+/* The right text in the navbar (md) */
+@media screen and (min-width: 768px)
+{
+    .vdors-navbar-text-right
+    {
+        display: block;
+    }
+}
+/* The collapse part in the navbar */
+.vdors-navbar-collapse
+{
+    margin-top: -2.5px !important;
+    margin-bottom: -2.5px !important;
+}
+/* The item of nav in the navbar */
+.vdors-navbar-nav-item
+{
+    font-size: 20px !important;
+    margin: 5px !important;
+}
+
+/***********************************/
+/* Customized based on BMD `table` */
+/***********************************/
+
+/* The table */
+.vdors-table
+{
+    margin: 0.5rem 0;
+}
+/* The cells of the table (th) */
+.vdors-table th
+{
+    vertical-align: middle !important;
+}
+/* The cells of the table (td) */
+.vdors-table td
+{
+    vertical-align: middle !important;
+}
+/* @deprecated */
+/* The rounded table (whole) */
+.vdors-table-rounded
+{
+    border-radius: 0.5rem;
+}
+/* @deprecated */
+/* The rounded table (top, th:first) */
+.vdors-table-rounded > thead:first-of-type > tr:first-of-type > th:first-of-type
+{
+    border-top-left-radius: 0.5rem;
+}
+/* @deprecated */
+/* The rounded table (top, th:last) */
+.vdors-table-rounded > thead:first-of-type > tr:first-of-type > th:last-of-type
+{
+    border-top-right-radius: 0.5rem;
+}
+/* @deprecated */
+/* The rounded table (top, td:first) */
+.vdors-table-rounded > tbody:first-of-type > tr:first-of-type > td:first-of-type
+{
+    border-top-left-radius: 0.5rem;
+}
+/* @deprecated */
+/* The rounded table (top, td:last) */
+.vdors-table-rounded > tbody:first-of-type > tr:first-of-type > td:last-of-type
+{
+    border-top-right-radius: 0.5rem;
+}
+/* @deprecated */
+/* The rounded table (bottom, td:first) */
+.vdors-table-rounded > tbody:last-of-type > tr:last-of-type > td:first-of-type
+{
+    border-bottom-left-radius: 0.5rem;
+}
+/* @deprecated */
+/* The rounded table (bottom, td:last) */
+.vdors-table-rounded > tbody:last-of-type > tr:last-of-type > td:last-of-type
+{
+    border-bottom-right-radius: 0.5rem;
+}
+/* The table with the hover effect on each cells */
+.vdors-table-hover-cell td:hover
+{
+    background-color: rgba(0, 0, 0, 0.025);
+}
+/* The table with the active effect on each cells */
+.vdors-table-active-cell td:active
+{
+    background-color: rgba(0, 0, 0, 0.07);
+}
+/* The table with the hover effect on each rows */
+.vdors-table-hover-row tr:hover td
+{
+    background-color: rgba(0, 0, 0, 0.025);
+}
+/* The table with the active effect on each rows */
+.vdors-table-active-row tr:active td
+{
+    background-color: rgba(0, 0, 0, 0.07);
+}
+/* The head of the table */
+.vdors-table-head
+{
+    background-color: #3f51b5;
+}
+/* The th of the head of the table */
+.vdors-table-head th
+{
+    font-size: 1.1rem !important;
+    text-align: center;
+    color: #ffffff !important;
+}
+/* The link of the body of the table */
+.vdors-table-body a
+{
+    color: black;
+}
+
+/**************************************/
+/* Customized based on BMD `carousel` */
+/**************************************/
+
+/* The Carousel */
+.vdors-carousel
+{
+    width: 960px;
+    min-width: 960px;
+    height: 540px;
+    min-height: 540px;
+    margin-bottom: 211px;
+    margin-right: auto;
+    margin-left: auto;
+}
+/* The container of the carousel */
+.vdors-carousel-container
+{
+    width: 100%;
+    background: #e9ecef;
+    padding-bottom: 1px;
+}
+/* The carousel indicators */
+.vdors-carousel-indicators
+{
+    bottom: -163px;
+    margin-right: auto;
+    margin-left: auto;
+}
+/* The indicator of carousel indicators */
+.vdors-carousel-indicators > li
+{
+    background: #ffffff;
+    width: 192px;
+    min-width: 192px;
+    height: 115px;
+    min-height: 115px;
+    margin: 0 4px;
+    cursor: pointer;
+}
+/* The active indicator of carousel indicators */
+.vdors-carousel-indicators > li.active
+{
+    background: #909090;
+}
+/* The indicator of carousel indicators */
+.vdors-carousel-indicators > li > img
+{
+    background: #ffffff;
+    margin: 0.5rem;
+    width: 176px;
+    min-width: 176px;
+    height: 99px;
+    min-height: 99px;
+}
+/* @deprecated */
+/* The caret of the indicator of carousel indicators */
+.vdors-craousel-indicators-caret
+{
+    position: absolute;
+    top: -45px;
+    font-size: 2.5rem;
+    color: #909090;
+    transition-delay: 500ms;
+}
+
+/******************************/
+/* The simple default divider */
+/******************************/
+
+/* A full width dividing line */
+.vdors-divider
+{
+    width: 100%;
+    height: 0;
+    margin: 0.5rem 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.26);
+}
+/* A full height vertical dividing line */
+.vdors-divider-vertical
+{
+    height: 100%;
+    width: 0;
+    margin: 0 0.5rem;
+    border-left: 1px solid rgba(0, 0, 0, 0.26);
+}
+
+/*************************/
+/* The parts of the main */
+/*************************/
+
+/* The main div of main-center */
+.vdors-main-center
+{
+    margin-top: 15px;
+    margin-bottom: 60px;
+}
+/* The main div of main-left */
+.vdors-main-side
+{
+    margin-top: 75px;
+    margin-bottom: 60px;
+}
+
+/*****************/
+/* The item list */
+/*****************/
+
+/* The item list */
+.vdors-item-list
+{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 0.5rem 0;
+    margin: 0;
+}
+/* The item of the item list */
+.vdors-item-list-item
+{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: inherit;
+    list-style-type: none;
+}
+/* The bordered item of the item list */
+.vdors-item-list-bordered > .vdors-item-list-item
+{
+    border-top: 1px solid rgba(0, 0, 0, 0.26) !important;
+    border-left: 1px solid rgba(0, 0, 0, 0.26) !important;
+    border-right: 1px solid rgba(0, 0, 0, 0.26) !important;
+}
+/* The bordered item of the item list (first item) */
+.vdors-item-list-bordered > .vdors-item-list-item:first-child
+{
+    border-top-left-radius: 0.25rem !important;
+    border-top-right-radius: 0.25rem !important;
+}
+/* The bordered item of the item list (last item) */
+.vdors-item-list-bordered > .vdors-item-list-item:last-child
+{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.26) !important;
+    border-bottom-left-radius: 0.25rem !important;
+    border-bottom-right-radius: 0.25rem !important;
+}
+/* The bordered item of the item list (only item) */
+.vdors-item-list-bordered > .vdors-item-list-item:only-child
+{
+    border: 1px solid rgba(0, 0, 0, 0.26) !important;
+    border-radius: 0.25rem !important;
+}
+/* The striped item list */
+.vdors-item-list-striped > .vdors-item-list-item:nth-child(even)
+{
+    background-color: #f5f5f5;
+}
+/* The primary item of the item list */
+.vdors-item-list-item-primary
+{
+    color: #212a5e;
+    background-color: #c9ceea;
+}
+/* The secondary item of the item list */
+.vdors-item-list-item-secondary
+{
+    color: #383d41;
+    background-color: #d6d8db;
+}
+/* The success item of the item list */
+.vdors-item-list-item-success
+{
+    color: #285b2a;
+    background-color: #cde9ce;
+}
+/* The danger item of the item list */
+.vdors-item-list-item-danger
+{
+    color: #7f231c;
+    background-color: #fccac7;
+}
+/* The warning item of the item list */
+.vdors-item-list-item-warning
+{
+    color: #852d12;
+    background-color: #ffd0c1;
+}
+/* The info item of the item list */
+.vdors-item-list-item-info
+{
+    color: #02587f;
+    background-color: #b8e7fc;
+}
+/* The light item of the item list */
+.vdors-item-list-item-light
+{
+    color: #7f7f7f;
+    background-color: #b8e7fc;
+}
+/* The dark item of the item list */
+.vdors-item-list-item-dark
+{
+    color: #222;
+    background-color: #bdbdbd;
+}
+/* The body of the item of the item list */
+.vdors-item-list-body
+{
+    display: flex;
+    margin: 0;
+    padding: 1rem;
+    width: 100%;
+    line-height: 1;
+    list-style-type: none;
+    flex-direction: row;
+}
+/* The bordered item of the item list (only item) */
+.vdors-item-list-bordered > .vdors-item-list-item > .vdors-item-list-body
+{
+    padding: 1.5rem !important;
+}
+/* The item of the item list (hover) */
+.vdors-item-list-action > .vdors-item-list-item > .vdors-item-list-body:hover
+{
+    background-color: rgba(0, 0, 0, 0.025) !important;
+}
+/* The item of the item list (active) */
+.vdors-item-list-action > .vdors-item-list-item > .vdors-item-list-body:active
+{
+    background-color: rgba(0, 0, 0, 0.07) !important;
+}
+/* The main of the item of the item list */
+.vdors-item-list-main
+{
+    display: flex;
+    flex-flow: column wrap;
+    padding: 0;
+    margin: 0;
+    /* left: auto; */
+}
+/* All children of the item of the item list */
+.vdors-item-list-main > :not(:last-child)
+{
+    margin-bottom: 1rem;
+}
+/* Last children of the item of the item list */
+.vdors-item-list-main > :not(.vdors-item-list-main-divider):last-of-type
+{
+    margin-bottom: 1rem;
+}
+/* Last children of the item of the item list (md) */
+@media screen and (min-width: 768px)
+{
+    .vdors-item-list-main > :not(.vdors-item-list-main-divider):last-of-type
+    {
+        margin-bottom: 0;
+    }
+}
+/* All badges of the item of the item list */
+.vdors-item-list-main .badge
+{
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+}
+/* The header of the item of the item list */
+.vdors-item-list-main-header
+{
+    font-size: 24px;
+    color: black;
+}
+/* The link in the header of the item of the item list */
+.vdors-item-list-main-header > a:not(.badge)
+{
+    color: black;
+}
+/* The text of the item of the item list */
+.vdors-item-list-main-text
+{
+    font-size: .875rem;
+    line-height: 1rem;
+    color: rgba(0, 0, 0, 0.54);
+}
+/* The text of the item of the item list and the divider */
+.vdors-item-list-main-text + .vdors-divider
+{
+    margin-top: 0 !important;
+}
+/* The link in the text of the item of the item list */
+.vdors-item-list-main-text > a:not(.badge)
+{
+    color: rgba(0, 0, 0, 0.54);
+}
+/* The title of the text of the item of theitem list */
+.vdors-item-list-main-title
+{
+    font-weight: bold;
+}
+/* The divider of the main of the item of the item list */
+.vdors-item-list-main-divider
+{
+    width: 100%;
+    height: 0;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.26);
+}
+/* The divider of the main of the item of the item list (md) */
+@media screen and (min-width: 768px)
+{
+    .vdors-item-list-main-divider
+    {
+        display: none;
+    }
+}
+/* The buttons of the item of the item list */
+.vdors-item-list-main-buttons
+{
+    margin-left: auto;
+}
+/* The button in the buttons of the item of the item list */
+.vdors-item-list-main-buttons > .btn
+{
+    margin-bottom: 0;
+}
+/* The buttons of the item of the item list (not last child) */
+.vdors-item-list-main-buttons > .btn:not(:last-child)
+{
+    margin-right: 1rem;
+}
+/* The side of the item of the item list */
+.vdors-item-list-side
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+}
+/* The divider of the side of the item of the item list */
+.vdors-item-list-side-divider
+{
+    display: none;
+    height: 100%;
+    width: 0;
+    margin-left: 1rem;
+    margin-right: 1.5rem;
+    border-left: 1px solid rgba(0, 0, 0, 0.26);
+}
+/* The divider of the side of the item of the item list (md) */
+@media screen and (min-width: 768px)
+{
+    .vdors-item-list-side-divider
+    {
+        display: inline-block;
+    }
+}
+/* The buttons of the side of the item of the item list */
+.vdors-item-list-side-buttons
+{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+/* The button in the buttons of the side of the item of the item list (last child) */
+.vdors-item-list-side-buttons > .btn:last-child
+{
+    margin-bottom: 0;
+}
+
+/*******************/
+/* The normal card */
+/*******************/
+
+/* The body of the card */
+.vdors-card-body
+{
+    padding: 1.5rem !important;
+}
+/* All badges of the body of the card */
+.vdors-card-body .badge
+{
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+}
+/* The header of the card */
+.vdors-card-header
+{
+    font-size: 32px !important;
+    font-weight: lighter !important;
+}
+/* The subheader of the card */
+.vdors-card-sub-header
+{
+    font-size: 24px !important;
+    font-weight: lighter !important;
+}
+/* The title of the card */
+.vdors-card-title
+{
+    font-weight: bold;
+}
+/* The buttons of the card */
+.vdors-card-buttons
+{
+    display: flex;
+    float: right;
+}
+/* The buttons of the card */
+.vdors-card-buttons > .btn
+{
+    margin-bottom: 0;
+}
+/* The buttons of the card (not first hild) */
+.vdors-card-buttons > .btn:not(:last-child)
+{
+    margin-right: 1rem;
+}
+/* The simple buttons of the card */
+.vdors-card-buttons-simple
+{
+    margin-bottom: 1rem;
+}
+/* The button of the simple buttons of the card */
+.vdors-card-buttons-simple > .btn
+{
+    margin-bottom: 0;
+}
+/* The button of the simple buttons of the card (not last child) */
+.vdors-card-buttons-simple > .btn:not(:last-child)
+{
+    margin-right: 1rem;
+}
+/* The link of the card */
+.vdors-card-link
+{
+    color: black !important;
+}
+/* The middle footer of the card */
+.vdors-card-mid-footer
+{
+    border-top: 0 !important;
+    border-bottom: 1px solid #dee2e6 !important;
+}
+
+/************************/
+/* The main three parts */
+/************************/
+
+/* The main three parts */
+.vdors-main-tri
+{
+    margin-top: 15px;
+}
+
+/******************/
+/* The breadcrumb */
+/******************/
+
+/* The normal breadcrumb */
+.vdors-breadcrumb
+{
+    margin: 0px;
+}
+
+/************************/
+/* The textarea counter */
+/************************/
+
+/* The textarea counter */
+.vdors-textarea-counter
+{
+    /* Just for Javascript */
+}
+/* The counts of the textarea counter */
+.vdors-textarea-counts
+{
+    /* Just for Javascript */
+}
