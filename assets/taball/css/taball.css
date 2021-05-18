@@ -1,0 +1,127 @@
+/* The universal CSS settings */
+
+/********************************/
+/* Basic universal CSS settings */
+/********************************/
+
+/* Basic universal settings */
+.taball-universal
+{
+    font-family:
+        /* Safari for OS X and iOS (San Francisco) */
+        -apple-system,
+        /* Chrome < 56 for OS X (San Francisco) */
+        "BlinkMacSystemFont",
+        /* Windows */
+        "Segoe UI",
+        /* Android */
+        "Roboto",
+        /* Basic web fallback */
+        "Helvetica Neue", "Helvetica", "Arial",
+        /* Chinese (Traditional) in OS X >= 10.6 */
+        "黑體-繁", "Heiti TC",
+        /* Chinese (Traditional) in OS X < 10.6 */
+        "儷黑 Pro", "LiHei Pro",
+        /* Chinese (Traditional) in Google Noto */
+        "Noto Sans CJK TC",
+        /* Chinese (Traditional) in Windows */
+        "微軟正黑體", "Microsoft JhengHei",
+        /* Chinese (Traditional) in Linux */
+        "文泉驛正黑", "WenQuanYi Zen Hei",
+        /* Universal */
+        sans-serif,
+        /* Emoji fonts */
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    /* color: black; */
+    font-weight: 350;
+}
+
+/*************/
+/* Jumbotron */
+/*************/
+
+.taball-jumbotron
+{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* .taball-jumbotron h1,
+.taball-jumbotron h2,
+.taball-jumbotron h3,
+.taball-jumbotron h4,
+.taball-jumbotron h5,
+.taball-jumbotron h6
+{
+    margin-bottom: 3rem !important;
+} */
+
+/*************/
+/* Main Part */
+/*************/
+
+.taball-main-tri
+{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+/**********/
+/* Footer */
+/**********/
+
+.taball-footer
+{
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+/**************/
+/* Scroll Bar */
+/**************/
+
+::-webkit-scrollbar
+{
+    width: 15px;
+    height: 15px;
+}
+
+::-webkit-scrollbar-button
+{
+    background: #2B2B2B;
+}
+
+::-webkit-scrollbar-button:hover
+{
+    background: #393939;
+}
+
+::-webkit-scrollbar-track
+{
+    background: #505050;
+}
+
+::-webkit-scrollbar-thumb
+{
+    background: #808080; 
+}
+
+::-webkit-scrollbar-thumb:hover
+{
+    background: #B0B0B0;
+}
+
+::-webkit-scrollbar-corner
+{
+    background: #1F1F1F;
+}
+
+::-webkit-resizer
+{
+    background: #A18E39;
+}
+
+::-webkit-resizer:hover
+{
+    background: #D3BC55;
+}

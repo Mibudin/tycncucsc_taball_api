@@ -1,0 +1,91 @@
+//- The base template of the main pages
+//- Includes:
+        _meta-default.pug
+        _link-css-bmd.pug  @deprecated
+        _link-css-mdb.pug
+        _link-css-default.pug
+        _link-fontawesome.pug
+        _link-favicon.pug
+        _heading-default.pug
+        _footer-default.pug
+        _script-bmd-default.pug  @deprecated
+        _script-bmd-tooltip.pug  @deprecated
+        _script-mdb-default.pug
+//- Blocks:
+        define-other
+        mixin-other
+        link-css-other
+        link-other
+        title-text
+        header-heading*
+        main-left
+        main-center
+        main-right
+        footer*
+        script-other
+
+<!DOCTYPE html>
+//- `lang` should be set to `zh-TW`
+html(lang="zh-TW")
+    //- The define of other things
+    block define-other
+    //- The mixin of other things
+    block mixin-other
+    //- The head of the page
+    head
+        //- The meta defines
+        include _meta-default.pug
+        //- The link to Bootstrap CSS
+        //- @deprecated
+        //- include _link-css-bmd.pug
+        include _link-css-mdb.pug
+        //- The link to default CSS
+        include _link-css-default.pug
+        //- The link to Font Awesome CSS
+        include _link-fontawesome.pug
+        //- The link to other CSS
+        block link-css-other
+        //- The link to favicon
+        include _link-favicon.pug
+        //- The link to other things
+        block link-other
+        //- The title of the page
+        title
+            //- Just enter the title text
+            block title-text
+    //- The body of the page
+    body(class="taball-universal text-light")
+        //- The main container of the page
+        div(class="d-flex flex-column", style="min-height: 100vh;")
+            //- The header of the page
+            header
+                //- The heading text of the header
+                block header-heading
+                    include _heading-default.pug
+            //- The main of the page
+            main(style="flex: auto;")
+                //- The main content of the main
+                div(class="container")
+                    div(class="row taball-main-tri")
+                        div(class="col-1 col-xl-1")
+                            //- The left pert of the main
+                            block main-left
+                        div(class="col-10 col-xl-10")
+                            //- The center part of the main
+                            block main-center
+                        div(class="col-1 col-xl-1")
+                            //- The right part of the main
+                            block main-right
+            //- The footer of the page
+            footer
+                //- The footer of the page
+                block footer
+                    include _footer-default.pug
+        //- The script of the Bootstrap
+        //- @deprecated
+        //- include _script-bmd-default.pug
+        //- @deprecated
+        //- include _script-bmd-tooltip.pug
+        include _script-mdb-default.pug
+        //- The script of the page
+        block script-other
