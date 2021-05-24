@@ -4,6 +4,9 @@ const _ = require("underscore");
 
 const TableRecordSchema = require("../schema/table");
 
+const CF = require("../app").CF;
+const ula = require("../app").ula;
+
 
 let tableAmount = 0;
 let tableRecords = [];  // TODO: Should be sorted?
@@ -44,13 +47,13 @@ function getTableRecord(tableID)
  */
 function initTableRecords(_tableAmount)
 {
+    // TODO: Init with data in database
     tableAmount = Number(_tableAmount);
     tableRecords = new Array(tableAmount - 1);
     const nowTime = new Date();
 
     for(let i = 0; i < tableAmount; i++)
     {
-        // TODO:
         // tableRecords[i] = new TableRecordSchema(
         //     {
         //         tableID: i,
@@ -64,38 +67,51 @@ function initTableRecords(_tableAmount)
 /**
  * 
  * @param {"TableRecord"[]} _tableRecords
+ * @returns
  */
 function patchTableRecords(_tableRecords)
 {
+    const nowTime = new Date();
     for(let i = 0; i < _tableRecords.length; i++)
     {
-        _tableRecords[i] = new TableRecordSchema(_tableRecords[i]).toObject();
+        _tableRecords[i] = new TableRecordSchema(_tableRecords[i]);
+        _tableRecords[i].updateTime = nowTime;
+        _tableRecords[i] = _tableRecords[i].toObject();
     }
     _tableRecords.sort((a, b) => a.tableID - b.tableID);
 
+    // TODO: Determine whther occupied!!!
+
+    let changed = false;
     for(let i = 0, j = 0; i < tableRecords.length && j < _tableRecords.length;)
     {
         if(_tableRecords[j].tableID === undefined) j++;
         else if(tableRecords[i].tableID === _tableRecords[j].tableID)
         {
+            if(!changed) changed = true;
             _.extend(tableRecords[i], _tableRecords[j]);
             i++, j++;
         }
         else if(tableRecords[i].tableID < _tableRecords[j].tableID) i++;
         else j++;
     }
+
+    return changed;
 }
 
 /**
  * 
  * @param {number} tableID
  * @param {"TableRecord"} _tableRecord
+ * @returns
  */
 function patchTableRecord(tableID, _tableRecord)
 {
     tableID = Number(tableID);
-    _tableRecord = new TableRecordSchema(_tableRecord).toObject();
-    if(_tableRecord.tableID === undefined || tableID !== _tableRecord.tableID) return undefined;
+    _tableRecord = new TableRecordSchema(_tableRecord);
+    _tableRecord.updateTime = new Date();
+    _tableRecord = tableRecord.toObject();
+    if(_tableRecord.tableID === undefined || tableID !== _tableRecord.tableID) return false;
 
     let tableRecord = undefined;
 
@@ -120,10 +136,20 @@ function patchTableRecord(tableID, _tableRecord)
         else if(tableRecord.tableID > tableID) e = m;
         else                                   break;
     }
-    if(s >= e) return undefined;
+    if(s >= e) return false;
 
     _.extend(tableRecord, _tableRecord);
-    return tableRecord.tableID;
+    return true;
+}
+
+function recordTableRecords()
+{
+    ula.ul.pushOne(CF.mongo.db.colles.table.name,
+        {
+            updateTime: new Date().toISOString(),
+            records: _.extend([], tableRecords)
+        },
+        ()=>{});
 }
 
 
@@ -133,5 +159,6 @@ module.exports =
     getTableRecord: getTableRecord,
     initTableRecords: initTableRecords,
     patchTableRecords: patchTableRecords,
-    patchTableRecord: patchTableRecord
+    patchTableRecord: patchTableRecord,
+    recordTableRecords: recordTableRecords
 };

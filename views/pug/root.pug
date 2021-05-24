@@ -4,65 +4,71 @@
 //- Extend:
         _tmp/_page-base.pug
 //- Includes:
+        _tmp/_mixin-table-cards.pug
 //- Blocks:
+        mixin-other*
         title-text*
         main-center*
 
 extends _tmp/_page-base.pug
+
+block mixin-other
+    include _tmp/_mixin-table-cards.pug
 
 block title-text
     | ~ TYCNCUCSC TABALL ~
 
 block main-center
     //- span(data-mdb-toggle="tooltip", data-mdb-placement="top", title="進入登入頁面") as123s
-    div(class="row flex-wrap justify-content-evenly")
-        each val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-            div(class="col-sm-12 col-md-4 col-xxl-3 mb-4")
-                div(class="card text-center")
-                    case val % 2
-                        when 0
-                            div(class="card-header text-success") <i class="fas fa-table-tennis"></i> 未佔用 <i class="fas fa-table-tennis"></i>
-                        when 1
-                            div(class="card-header text-danger") <i class="fas fa-table-tennis"></i> 已佔用 <i class="fas fa-table-tennis"></i>
-                    div(class="card-body")
-                        h5(class="card-title") 桌球桌 ID：!{val}
-                        table(class="card-text table table-bordered table-sm table-striped table-hover align-middle mt-3")
-                            thead
-                                tr
-                                    th(scope="col", colspan="2") 分數
-                            tbody
-                                tr
-                                    th(scope="col") 甲
-                                    th(scope="col") 乙
-                                tr
-                                    td 1048
-                                    td 596
-                        table(class="card-text table table-bordered table-sm table-striped table-hover align-middle mt-3")
-                            thead
-                                tr
-                                    th(scope="col", colspan="2") 感測器
-                                    th(scope="col") 距離
-                            tbody
-                                tr
-                                    th(scope="row", rowspan="3") 甲
-                                    th(scope="row") 左
-                                    td 1
-                                tr
-                                    th(scope="row") 中
-                                    td 2
-                                tr
-                                    th(scope="row") 右
-                                    td 3
-                                tr
-                                    th(scope="row", rowspan="3") 乙
-                                    th(scope="row") 左
-                                    td 1
-                                tr
-                                    th(scope="row") 中
-                                    td 2
-                                tr
-                                    th(scope="row") 右
-                                    td 3
-                    div(class="card-footer text-muted")
-                        small 時間：2021-05-18T19:22:23.166Z
+    +_mixin-table-cards(tableRecords)
+    //- div(class="row flex-wrap justify-content-evenly")
+        //- each val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+        //-     div(class="col-sm-12 col-md-4 col-xxl-3 mb-4")
+        //-         div(class="card text-center")
+        //-             case val % 2
+        //-                 when 0
+        //-                     div(class="card-header text-success") <i class="fas fa-table-tennis"></i> 未佔用 <i class="fas fa-table-tennis"></i>
+        //-                 when 1
+        //-                     div(class="card-header text-danger") <i class="fas fa-table-tennis"></i> 已佔用 <i class="fas fa-table-tennis"></i>
+        //-             div(class="card-body")
+        //-                 h5(class="card-title") 桌球桌 ID：!{val}
+        //-                 table(class="card-text table table-bordered table-sm table-striped table-hover align-middle mt-3")
+        //-                     thead
+        //-                         tr
+        //-                             th(scope="col", colspan="2") 分數
+        //-                     tbody
+        //-                         tr
+        //-                             th(scope="col") 甲
+        //-                             th(scope="col") 乙
+        //-                         tr
+        //-                             td 1048
+        //-                             td 596
+        //-                 table(class="card-text table table-bordered table-sm table-striped table-hover align-middle mt-3")
+        //-                     thead
+        //-                         tr
+        //-                             th(scope="col", colspan="2") 感測器
+        //-                             th(scope="col") 距離
+        //-                     tbody
+        //-                         tr
+        //-                             th(scope="row", rowspan="3") 甲
+        //-                             th(scope="row") 左
+        //-                             td 1
+        //-                         tr
+        //-                             th(scope="row") 中
+        //-                             td 2
+        //-                         tr
+        //-                             th(scope="row") 右
+        //-                             td 3
+        //-                         tr
+        //-                             th(scope="row", rowspan="3") 乙
+        //-                             th(scope="row") 左
+        //-                             td 1
+        //-                         tr
+        //-                             th(scope="row") 中
+        //-                             td 2
+        //-                         tr
+        //-                             th(scope="row") 右
+        //-                             td 3
+        //-             div(class="card-footer text-muted")
+        //-                 small 時間：2021-05-18T19:22:23.166Z
     //- include _tmp/_test-lorem-ipsum.pug

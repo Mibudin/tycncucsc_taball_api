@@ -18,12 +18,14 @@ const ula = new (require("./lib/uList/UListAsync").UListAsync)(
 /**
  * Initializa the MongoDB driver.
  */
-await ula.connectToClient();
+await ula.connectToDB();
+// if(CF.server.cf.inDev) await ula.dropCollection(CF.mongo.db.colles.table.name)
 
 /**
  * Initialize controllers
  */
 require("./controllers/tableController").initTableRecords(CF.server.cf.tableNum);
+require("./controllers/viewController").initViewPages(["/"]);
 
 /**
  * Express APP set
@@ -32,7 +34,7 @@ app.set("port", process.env.PORT || CF.server.lan.port);
 app.set("hostName", CF.server.lan.host);
 app.set("views", "views");
 app.set("view engine", "pug");
-// app.set("env", "production");  //Not to send error message to the front end
+app.set("env", CF.server.cf.inDev ? "development" : "production");  // Not to send error message to the front end
 
 /**
  * Express APP use: body parsing

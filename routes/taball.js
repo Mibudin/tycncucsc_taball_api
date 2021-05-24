@@ -3,6 +3,7 @@
 const Express = require("express");
 const router = Express.Router();
 
+const tableController = require("../controllers/tableController");
 const viewController = require("../controllers/viewController");
 
 
@@ -21,9 +22,14 @@ router.use((req, res, next) => {
 router.route("/")
     .all((req, res) => {
         // res.status(200).send("~TYCNCUCSC TABALL WEBSITE~");
-        let pugPath = viewController.pathnameToPugPath(req.path);
-        let renderData = {};
-        res.status(200).render(pugPath, renderData);
+        // let pugPath = viewController.pathnameToPugPathView(req.path);
+        // let renderData = {};
+        // res.status(200).render(pugPath, renderData);  // TODO: Outer Pug render?
+        res.status(200).send(
+            viewController.renderViewPage(req.path,
+                {
+                    tableRecords: tableController.getTableRecords()
+                }));
         return;
     });
 

@@ -7,7 +7,8 @@ const _ = require("underscore");
 
 const userController = require("../controllers/userController");
 const tableController = require("../controllers/tableController");
-const { response } = require("express");
+
+const CF = require("../app").CF;
 
 
 /**
@@ -25,15 +26,15 @@ router.use((req, res, next) => {
     if(id === undefined)
     {
         console.log("  User: undefined (Unauthorized)");
-        // res.status(401).send("401 Unauthorized: No authorization ID given!");
-        next();
+        if(CF.server.cf.apiAuth) res.status(401).send("401 Unauthorized: No authorization ID given!");
+        else                     next();
         return;
     }
     else if(key === undefined)
     {
         console.log("  User: \"" + id + "\" (Unauthorized)");
-        // res.status(401).send("401 Unauthorized: No authorization key given!");
-        next();
+        if(CF.server.cf.apiAuth) res.status(401).send("401 Unauthorized: No authorization key given!");
+        else                     next();
         return;
     }
 
@@ -41,15 +42,15 @@ router.use((req, res, next) => {
     if(userData === undefined)
     {
         console.log("  User: \"" + id + "\" (Unauthorized)");
-        // res.status(401).send("401 Unauthorized: User not found!");
-        next();
+        if(CF.server.cf.apiAuth) res.status(401).send("401 Unauthorized: User not found!");
+        else                     next();
         return;
     }
     else if(userData.userName === undefined)
     {
         console.log("  User: \"" + id + "\" (Unauthorized)");
-        // res.status(401).send("401 Unauthorized: Wrong authorization key given!");
-        next();
+        if(CF.server.cf.apiAuth) res.status(401).send("401 Unauthorized: Wrong authorization key given!");
+        else                     next();
         return;
     }
     else
@@ -81,7 +82,14 @@ router.route("/tables")
         return;
     })
     .patch((req, res) => {
-        tableController.patchTableRecords(_.extend([], req.body));
+        let changed = tableController.patchTableRecords(_.extend([], req.body));
+        if(changed) tableController.recordTableRecords();
+        else
+        {
+            res.status(404)
+                .send("404 Not Found: The given table records did not correspond to any one in the server.");
+            return;
+        }
         res.status(200).send();
         return;
     });
@@ -99,7 +107,9 @@ router.route("/tables/:tableID")
         return;
     })
     .patch((req, res) => {
-        if(tableController.patchTableRecord(Number(req.params.tableID), _.extend({}, req.body)) === undefined)
+        let changed = tableController.patchTableRecord(Number(req.params.tableID), _.extend({}, req.body));
+        if(changed) tableController.recordTableRecords();
+        else
         {
             res.status(404)
                 .send("404 Not Found: The table record with the given `tableID` was not found." +

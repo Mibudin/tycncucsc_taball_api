@@ -8,6 +8,8 @@ server:
     host: "140.115.200.35"
     port: 8281
   cf:
+    inDev: true
+    apiAuth: false
     tableNum: 10
 
 mongo:

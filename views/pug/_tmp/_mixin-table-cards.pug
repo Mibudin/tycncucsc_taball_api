@@ -1,0 +1,58 @@
+//- The mixin of the table cards
+//- Parameters:
+        _tableRecords
+            {TableRecord[]}
+            The records of tables to be listed.
+            Format:
+                Follow the `TableRecordSchema`.
+
+mixin _mixin-table-cards(_tableRecords)
+    div(class="row flex-wrap justify-content-evenly")
+        - for(___tableRecord of _tableRecords)
+            div(class="col-sm-12 col-md-4 col-xxl-3 mb-4")
+                div(class="card text-center")
+                    - if(!___tableRecord.isOccupied)
+                        div(class="card-header text-success") <i class="fas fa-table-tennis"></i> 未佔用 <i class="fas fa-table-tennis"></i>
+                    - else
+                        div(class="card-header text-danger") <i class="fas fa-table-tennis"></i> 已佔用 <i class="fas fa-table-tennis"></i>
+                    div(class="card-body")
+                        h5(class="card-title") 桌球桌 ID：#{___tableRecord.tableID}
+                        table(class="card-text table table-bordered table-sm table-striped table-hover align-middle mt-3")
+                            thead
+                                tr
+                                    th(scope="col", colspan="2") 分數
+                            tbody
+                                tr
+                                    th(scope="col") 甲
+                                    th(scope="col") 乙
+                                tr
+                                    td #{___tableRecord.scores.a}
+                                    td #{___tableRecord.scores.b}
+                        table(class="card-text table table-bordered table-sm table-striped table-hover align-middle mt-3")
+                            thead
+                                tr
+                                    th(scope="col", colspan="2") 感測器
+                                    th(scope="col") 距離
+                            tbody
+                                tr
+                                    th(scope="row", rowspan="3") 甲
+                                    th(scope="row") 左
+                                    td #{___tableRecord.distances.a.left}
+                                tr
+                                    th(scope="row") 中
+                                    td #{___tableRecord.distances.a.middle}
+                                tr
+                                    th(scope="row") 右
+                                    td #{___tableRecord.distances.a.right}
+                                tr
+                                    th(scope="row", rowspan="3") 乙
+                                    th(scope="row") 左
+                                    td #{___tableRecord.distances.b.left}
+                                tr
+                                    th(scope="row") 中
+                                    td #{___tableRecord.distances.b.middle}
+                                tr
+                                    th(scope="row") 右
+                                    td #{___tableRecord.distances.b.right}
+                    div(class="card-footer text-muted")
+                        small 時間：#{___tableRecord.updateTime}
