@@ -4,7 +4,8 @@
 //- Extend:
         _tmp/_page-base.pug
 //- Includes:
-        _tmp/_mixin-table-cards.pug
+        _tmp/_mixin-table-cards.pug  @deprecated
+        _tmp/_mixin-table-cards-dynamic.pug
 //- Blocks:
         mixin-other*
         title-text*
@@ -13,14 +14,17 @@
 extends _tmp/_page-base.pug
 
 block mixin-other
-    include _tmp/_mixin-table-cards.pug
+    //- @deprecated
+    //- include _tmp/_mixin-table-cards.pug
+    include _tmp/_mixin-table-cards-dynamic.pug
 
 block title-text
     | ~ TYCNCUCSC TABALL ~
 
 block main-center
     //- span(data-mdb-toggle="tooltip", data-mdb-placement="top", title="進入登入頁面") as123s
-    +_mixin-table-cards(tableRecords)
+    +_mixin-table-cards-dynamic(tableRecords.length)
+    //- +_mixin-table-cards(tableRecords)
     //- div(class="row flex-wrap justify-content-evenly")
         //- each val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
         //-     div(class="col-sm-12 col-md-4 col-xxl-3 mb-4")

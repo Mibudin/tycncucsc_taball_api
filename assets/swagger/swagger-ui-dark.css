@@ -161,6 +161,13 @@ body > .swagger-ui
 }
 
 /* SELF ADD */
+.swagger-ui .markdown code,
+.swagger-ui .renderedMarkdown code
+{
+    color: #D4BE7D;
+}
+
+/* SELF ADD */
 .swagger-ui .btn
 {
     color: #E1E1E1;

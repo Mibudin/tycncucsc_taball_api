@@ -24,7 +24,7 @@ router.route("/")
         // res.status(200).send("~TYCNCUCSC TABALL WEBSITE~");
         // let pugPath = viewController.pathnameToPugPathView(req.path);
         // let renderData = {};
-        // res.status(200).render(pugPath, renderData);  // TODO: Outer Pug render?
+        // res.status(200).render(pugPath, renderData);
         res.status(200).send(
             viewController.renderViewPage(req.path,
                 {

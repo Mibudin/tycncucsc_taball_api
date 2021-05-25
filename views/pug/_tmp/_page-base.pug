@@ -11,6 +11,7 @@
         _script-bmd-default.pug  @deprecated
         _script-bmd-tooltip.pug  @deprecated
         _script-mdb-default.pug
+        _script-default.pug
 //- Blocks:
         define-other
         mixin-other
@@ -87,5 +88,7 @@ html(lang="zh-TW")
         //- @deprecated
         //- include _script-bmd-tooltip.pug
         include _script-mdb-default.pug
+        //- The script of the default page
+        include _script-default.pug
         //- The script of the page
         block script-other

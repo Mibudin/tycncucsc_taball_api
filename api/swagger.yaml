@@ -63,8 +63,8 @@ paths:
     get:  # TODO: all?
       tags:
         - "General"
-      summary: ""
-      description: ""
+      summary: "Get the message."
+      description: "Get the message from the server to check whether the server is not dead."
       operationId: ""
       responses:
         200:
@@ -93,7 +93,16 @@ paths:
       tags:
         - "Tables"
       summary: "Patch table records"
-      description: "Patch table records of some tables in an array once."
+      description: |
+        Patch table records of some tables in an array once.
+        Also, insert the patched whole data of table records into the database.
+
+        - Fields with special patch behaviors:
+          - `[].tableID`: ***(Required)*** Choose which table record to be patched.
+            - If a gievn `tableID` is not found, this given record would be omitted.
+            - If none of given `tableID`'s are found, returning the status code 401.
+          - `[].updateTime`: Have no effect. Will be overwritten by the server.
+          - `[].isOccupied`: Have no effect. Will be overwritten by the server.
       operationId: ""  # TODO:
       parameters:
         - $ref: "#/parameters/tableRecords"
@@ -126,7 +135,16 @@ paths:
       tags:
         - "Tables"
       summary: "Patch a table record by ID"
-      description: "Patch a table record by its table ID."
+      description: |
+        Patch a table record by its table ID.
+        Also, insert the patched whole data of table records into the database.
+
+        - Fields with special patch behaviors:
+          - `.tableID`: ***(Required)*** Choose which table record to be patched.
+            - Should be **SAME** as the given `tableID` in query, or returning the status code 401.
+            - If the gievn `tableID` is not found, returning the status code 401.
+          - `.updateTime`: Have no effect. Will be overwritten by the server.
+          - `.isOccupied`: Have no effect. Will be overwritten by the server.
       operationId: ""  # TODO:
       parameters:
         - $ref: "#/parameters/tableID"
@@ -147,12 +165,15 @@ definitions:
       left:
         type: "integer"
         format: "int32"
+        minimum: 0
       middle:
         type: "integer"
         format: "int32"
+        minimum: 0
       right:
         type: "integer"
         format: "int32"
+        minimum: 0
 
   TableRecord:
     type: "object"  
@@ -160,6 +181,7 @@ definitions:
       tableID:
         type: "integer"
         format: "int32"
+        minimum: 0
       updateTime:
         type: "string"
         format: "date-time"
@@ -178,9 +200,11 @@ definitions:
           a:
             type: "integer"
             format: "int32"
+            minimum: 0
           b:
             type: "integer"
             format: "int32"
+            minimum: 0
 
 
 parameters:
@@ -191,6 +215,7 @@ parameters:
     in: "path"
     type: "integer"
     format: "int32"
+    minimum: 0
 
   tableRecord:
     name: "tableRecord"

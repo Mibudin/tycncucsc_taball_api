@@ -24,7 +24,8 @@ await ula.connectToDB();
 /**
  * Initialize controllers
  */
-require("./controllers/tableController").initTableRecords(CF.server.cf.tableNum);
+// require("./controllers/tableController").initTableRecords(CF.server.cf.tableNum);
+await require("./controllers/tableController").initTableRecordsDb(CF.server.cf.tableNum);
 require("./controllers/viewController").initViewPages(["/"]);
 
 /**

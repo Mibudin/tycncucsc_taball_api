@@ -1,0 +1,77 @@
+//- The mixin of the dynamic table cards
+//- Parameters:
+        _tableAmount
+            {number}
+            The number of the amount of table records.
+
+mixin _mixin-table-cards-dynamic(_tableAmount)
+    div(class="row flex-wrap justify-content-evenly")
+        //- - for(___tableRecord of _tableRecords)
+        - for(let ___i = 0; ___i < _tableAmount; ___i++)
+            div(class="col-sm-12 col-md-4 col-xxl-3 mb-4")
+                div(class="card text-center", id=`table-card-${___i}`)
+                    //- div(class="card-header")
+                    //-     - if(!___tableRecord.isOccupied)
+                    //-         span(class="text-success", data-mdb-toggle="tooltip", title="根據感測器數據推斷，僅供參考")
+                    //-             <i class="fas fa-table-tennis"></i> 未佔用 <i class="fas fa-table-tennis"></i>
+                    //-     - else
+                    //-         span(class="text-danger", data-mdb-toggle="tooltip", title="根據感測器數據推斷，僅供參考")
+                    //-             <i class="fas fa-table-tennis"></i> 已佔用 <i class="fas fa-table-tennis"></i>
+                    div(class="taball-table-card-header card-header")
+                        span(class="text-success", data-mdb-toggle="tooltip", title="根據感測器數據推斷，僅供參考")
+                            <i class="fas fa-table-tennis"></i>
+                            span(class="taball-table-card-header-text") &nbsp;未佔用&nbsp;
+                            <i class="fas fa-table-tennis"></i>
+                    div(class="card-body")
+                        //- h5(class="card-title") 桌球桌 ID：#{___tableRecord.tableID}
+                        h5(class="card-title") 桌球桌 ID：
+                            span(class="taball-table-card-id") #{___i}
+                        table(class="card-text table table-bordered table-sm table-striped table-hover align-middle mt-3")
+                            thead
+                                tr
+                                    th(scope="col", colspan="2") 分數
+                            tbody
+                                tr
+                                    th(scope="col") 甲
+                                    th(scope="col") 乙
+                                tr(class="taball-table-card-scores")
+                                    //- td #{___tableRecord.scores.a}
+                                    //- td #{___tableRecord.scores.b}
+                                    td 0
+                                    td 0
+                        table(class="card-text table table-bordered table-sm table-striped table-hover align-middle mt-3")
+                            thead
+                                tr
+                                    th(scope="col", colspan="2") 感測器
+                                    th(scope="col") 距離
+                            tbody(class="taball-table-card-dists")
+                                tr
+                                    th(scope="row", rowspan="3") 甲
+                                    th(scope="row") 左
+                                    //- td #{___tableRecord.distances.a.left}
+                                    td 0
+                                tr
+                                    th(scope="row") 中
+                                    //- td #{___tableRecord.distances.a.middle}
+                                    td 0
+                                tr
+                                    th(scope="row") 右
+                                    //- td #{___tableRecord.distances.a.right}
+                                    td 0
+                                tr
+                                    th(scope="row", rowspan="3") 乙
+                                    th(scope="row") 左
+                                    //- td #{___tableRecord.distances.b.left}
+                                    td 0
+                                tr
+                                    th(scope="row") 中
+                                    //- td #{___tableRecord.distances.b.middle}
+                                    td 0
+                                tr
+                                    th(scope="row") 右
+                                    //- td #{___tableRecord.distances.b.right}
+                                    td 0
+                    div(class="card-footer text-muted")
+                        //- small 時間：#{___tableRecord.updateTime.toISOString()}
+                        small 時間：
+                            span(class="taball-table-card-time") 0

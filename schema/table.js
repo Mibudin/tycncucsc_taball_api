@@ -14,7 +14,8 @@ const DistanceSet =
 const TableRecordSchema = new SchemaObject(
     {
         tableID:    CS.NumberPosInt,
-        updateTime: CS.DateISO,
+        // updateTime: CS.DateISO,
+        updateTime: Date,
         isOccupied: {type: Boolean, default: false},
         distances:
         {
