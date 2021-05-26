@@ -5,7 +5,7 @@ swagger: "2.0"
 
 
 info:
-  title: "~TYCNCUCSC TABALL API~"
+  title: "~ TYCNCUCSC TABALL API ~"
   version: "0.1"
   description: |
     The API of the backend of **~TYCNCUCSC TABALL PROJECT~**.
@@ -103,12 +103,30 @@ paths:
             - If none of given `tableID`'s are found, returning the status code 401.
           - `[].updateTime`: Have no effect. Will be overwritten by the server.
           - `[].isOccupied`: Have no effect. Will be overwritten by the server.
+        - Other fields are all optional.
       operationId: ""  # TODO:
       parameters:
         - $ref: "#/parameters/tableRecords"
       responses:
         200:
           description: "Successful operation"
+        401:
+          $ref: "#/responses/401"
+
+  /tables/scores:
+    get:
+      tags:
+        - "Tables"
+      summary: "Get all scores of table records"
+      description: "Get all scores of table records of all tables in an array once."
+      operationId: ""  # TODO:
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/TableRecordScore"
         401:
           $ref: "#/responses/401"
 
@@ -145,6 +163,7 @@ paths:
             - If the gievn `tableID` is not found, returning the status code 401.
           - `.updateTime`: Have no effect. Will be overwritten by the server.
           - `.isOccupied`: Have no effect. Will be overwritten by the server.
+        - Other fields are all optional.
       operationId: ""  # TODO:
       parameters:
         - $ref: "#/parameters/tableID"
@@ -152,6 +171,27 @@ paths:
       responses:
         200:
           description: "Successful operation"
+        401:
+          $ref: "#/responses/401"
+        404:
+          description: "Table not found"
+
+  /tables/scores/{tableID}:
+    get:
+      tags:
+        - "Tables"
+      summary: "Get all scores of a table record"
+      description: "Get all scores of a table record by its table ID."
+      operationId: ""  # TODO:
+      parameters:
+        - $ref: "#/parameters/tableID"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/TableRecordScore"
         401:
           $ref: "#/responses/401"
         404:
@@ -194,6 +234,28 @@ definitions:
             $ref: "#/definitions/DistanceSet"
           b:
             $ref: "#/definitions/DistanceSet"
+      scores:
+        type: "object"
+        properties:
+          a:
+            type: "integer"
+            format: "int32"
+            minimum: 0
+          b:
+            type: "integer"
+            format: "int32"
+            minimum: 0
+
+  TableRecordScore:
+    type: "object"  
+    properties:
+      tableID:
+        type: "integer"
+        format: "int32"
+        minimum: 0
+      updateTime:
+        type: "string"
+        format: "date-time"
       scores:
         type: "object"
         properties:

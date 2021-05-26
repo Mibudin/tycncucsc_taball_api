@@ -19,8 +19,8 @@ function useSwagger(app)
         // customCss: ".swagger-ui .info .description::after{url("./favicon-pixel-xmas-smooth.ico");}",
         // customCssUrl: "/assets/swagger/swagger-ui-dark.css",
         customJs: "/assets/swagger/swagger-ui.js",
-        // customfavIcon: "/assets/swagger/favicon-real.ico",
-        customSiteTitle: "~TYCNCUCSC TABALL API~"
+        customfavIcon: "/assets/swagger/favicon.ico",
+        customSiteTitle: "~ TYCNCUCSC TABALL API ~"
     };
     app.use("/api-docs/v0", swaggerUI.serve, swaggerUI.setup(swaggerDocument, swaggerUiOptions));
     
@@ -34,8 +34,8 @@ function useSwagger(app)
         // customCss: ".swagger-ui .info .description::after{url("./favicon-pixel-xmas-smooth.ico");}",
         customCssUrl: "/assets/swagger/swagger-ui-dark.css",
         customJs: "/assets/swagger/swagger-ui.js",
-        // customfavIcon: "/assets/swagger/favicon-real.ico",
-        customSiteTitle: "~TYCNCUCSC TABALL API~"
+        customfavIcon: "/assets/swagger/favicon.ico",
+        customSiteTitle: "~ TYCNCUCSC TABALL API ~"
     };
     app.use("/api-docs-dark/v0", swaggerUI.serve, swaggerUI.setup(swaggerDocument, swaggerUiOptionsDark));
 }

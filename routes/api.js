@@ -94,6 +94,16 @@ router.route("/tables")
         return;
     });
 
+router.route("/tables/scores")
+    .get((req, res) => {
+        let tableRecords = tableController.getTableRecords();
+        tableRecords.forEach((value, index, array) => {
+            array[index] = _.pick(value, ["tableID", "updateTime", "scores"]);
+        });
+        res.status(200).json(tableRecords);
+        return;
+    });
+
 router.route("/tables/:tableID")
     .get((req, res) => {
         let tableRecord = tableController.getTableRecord(Number(req.params.tableID));
@@ -117,6 +127,19 @@ router.route("/tables/:tableID")
             return;
         }
         res.status(200).send();
+        return;
+    });
+
+router.route("/tables/scores/:tableID")
+    .get((req, res) => {
+        let tableRecord = tableController.getTableRecord(Number(req.params.tableID));
+        if(tableRecord === undefined)
+        {
+            res.status(404)
+                .send("404 Not Found: The table record with the given `tableID` was not found.");
+            return;
+        }
+        res.status(200).json(_.pick(tableRecord, ["tableID", "updateTime", "scores"]));
         return;
     });
 

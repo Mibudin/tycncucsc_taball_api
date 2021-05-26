@@ -138,7 +138,7 @@ function patchTableRecord(tableID, _tableRecord)
     tableID = Number(tableID);
     _tableRecord = new TableRecordSchema(_tableRecord);
     _tableRecord.updateTime = new Date();
-    _tableRecord = tableRecord.toObject();
+    _tableRecord = _tableRecord.toObject();
     _tableRecord.isOccupied = undefined;
     if(_tableRecord.tableID === undefined || tableID !== _tableRecord.tableID) return false;
 
