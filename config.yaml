@@ -9,6 +9,7 @@ server:
     port: 8281
   cf:
     inDev: true
+    swagger: true
     apiAuth: false
     tableNum: 10
 

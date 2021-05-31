@@ -18,6 +18,7 @@ function enableUpdate()
 {
     if(pageReady && !nextUpdate)
     {
+        updateTableCards()
         updater = setInterval(updateTableCards, 5000);
         nextUpdate = true;
     }
@@ -45,7 +46,8 @@ function getTableCards()
 {
     if(tableCardUpdater.readyState === XMLHttpRequest.DONE)
     {
-        if(tableCardUpdater.status === 304 || tableCardUpdater.status === 200)
+        // if(tableCardUpdater.status === 304 || tableCardUpdater.status === 200)
+        if(tableCardUpdater.status === 200)
         {
             setTableCards(JSON.parse(tableCardUpdater.responseText));
         }
@@ -115,6 +117,7 @@ disableTableCardsUpdate = disableUpdate;
 document.addEventListener("DOMContentLoaded", event => { 
     initDOMElements();
     pageReady = true;
+    enableUpdate();
 }); 
 
 })();

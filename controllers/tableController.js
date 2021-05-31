@@ -103,7 +103,7 @@ function patchTableRecords(_tableRecords)
         _tableRecords[i].isOccupied = undefined;
     }
     _tableRecords.sort((a, b) => a.tableID - b.tableID);
-    console.log(_tableRecords);
+    // console.log(_tableRecords);
     
     let changed = false;
     for(let i = 0, j = 0; i < tableRecords.length && j < _tableRecords.length;)
@@ -122,7 +122,7 @@ function patchTableRecords(_tableRecords)
         else if(tableRecords[i].tableID < _tableRecords[j].tableID) i++;
         else j++;
     }
-    console.log(tableRecords);
+    // console.log(tableRecords);
     
     return changed;
 }

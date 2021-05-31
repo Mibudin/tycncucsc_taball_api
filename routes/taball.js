@@ -3,6 +3,8 @@
 const Express = require("express");
 const router = Express.Router();
 
+const logger = require("../lib/logger/logger");
+
 const tableController = require("../controllers/tableController");
 const viewController = require("../controllers/viewController");
 
@@ -30,8 +32,44 @@ router.route("/")
                 {
                     tableRecords: tableController.getTableRecords()
                 }));
+        logMsg(req, res);
         return;
     });
 
+/**
+ * Other exceptions handling
+ */
+router.route("/*")
+    .all((req, res) => {
+        res.status(404).send("404 Not Found");
+        logMsg(req, res);
+        return;
+    });
+
+/**
+ * Error handling
+ */
+router.use((err, req, res, next) => {
+    res.status(500).send("500 Internal Server Error: Something broke!");
+    logMsg(req, res);
+    console.error(err.stack);
+    return;
+});
+
+
+/**
+ * 
+ * @param {"Request"} req 
+ * @param {"Response"} res 
+ */
+function logMsg(req, res)
+{
+    logger.logReqRes({
+        time: new Date().toISOString(),
+        cat:  "TABALL",
+        req:  req,
+        res:  res
+    });
+}
 
 module.exports = router;
