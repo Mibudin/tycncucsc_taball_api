@@ -22,17 +22,17 @@ const ula = new (require("./lib/uList/UListAsync").UListAsync)(
  */
 await ula.connectToDB();
 // if(CF.server.cf.inDev) await ula.dropCollection(CF.mongo.db.colles.table.name)
-logMsg("ULA", "CONNECT_DB", "CONPLETED");
+logMsg("ULA", "CONNECT_DB", "COMPLETED");
 
 /**
  * Initialize controllers
  */
 // require("./controllers/tableController").initTableRecords(CF.server.cf.tableNum);
 await require("./controllers/tableController").initTableRecordsDb(CF.server.cf.tableNum);
-logMsg("TABLE_CTRLR", "INIT", "CONPLETED");
+logMsg("TABLE_CTRLR", "INIT", "COMPLETED");
 
 require("./controllers/viewController").initViewPages(["/"]);
-logMsg("VIEW_CTRLR", "INIT", "CONPLETED");
+logMsg("VIEW_CTRLR", "INIT", "COMPLETED");
 
 /**
  * Express APP set
@@ -42,7 +42,7 @@ app.set("hostName", CF.server.lan.host);
 app.set("views", "views");
 app.set("view engine", "pug");
 app.set("env", CF.server.cf.inDev ? "development" : "production");  // Not to send error message to the front end
-logMsg("APP", "SET_ENV", "CONPLETED");
+logMsg("APP", "SET_ENV", "COMPLETED");
 
 /**
  * Express APP use: body parsing
@@ -50,21 +50,21 @@ logMsg("APP", "SET_ENV", "CONPLETED");
  */
 app.use(Express.json());  // For parsing application/json
 app.use(Express.urlencoded({extended: true}));  // For parsing application/x-www-form-urlencoded
-logMsg("APP", "USE_GEN", "CONPLETED");
+logMsg("APP", "USE_GEN", "COMPLETED");
 
 /**
  * Express APP use: `/assets`
  * Serve static files.
  */
 app.use("/assets", Express.static("assets"));
-logMsg("APP", "USE_STATIC", "CONPLETED");
+logMsg("APP", "USE_STATIC", "COMPLETED");
 
 /**
  * Express APP use: `/api/v0`
  * Serve the API.
  */
 app.use("/api/v0", require("./routes/api"));
-logMsg("APP", "USE_API", "CONPLETED");
+logMsg("APP", "USE_API", "COMPLETED");
 
 /**
  * Express APP use: `/api-docs/v0`, `/api-docs-dark/v0`
@@ -73,7 +73,7 @@ logMsg("APP", "USE_API", "CONPLETED");
 if(CF.server.cf.swagger)
 {
     require("./api/swagger").useSwagger(app);
-    logMsg("APP", "USE_SWAGGER", "CONPLETED");
+    logMsg("APP", "USE_SWAGGER", "COMPLETED");
 }
 
 /**
@@ -81,7 +81,7 @@ if(CF.server.cf.swagger)
  * Serve the website.
  */
 app.use("/taball", require("./routes/taball"));
-logMsg("APP", "USE_TABALL", "CONPLETED");
+logMsg("APP", "USE_TABALL", "COMPLETED");
 
 
 /**
@@ -89,7 +89,7 @@ logMsg("APP", "USE_TABALL", "CONPLETED");
  */
 app.listen(app.get("port"), app.get("hostName"));
 // console.log("~TYCNCUCSC TABALL API~\nThe server is now started on the port: " + app.get("port"));
-logMsg("APP", "LISTEN", "CONPLETED][" + app.get("port"));
+logMsg("APP", "LISTEN", "COMPLETED][" + app.get("port"));
 
 
 /**

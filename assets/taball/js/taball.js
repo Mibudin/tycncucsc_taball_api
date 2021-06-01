@@ -1,7 +1,7 @@
 "use strict";
 
-let enableTableCardsUpdate;
-let disableTableCardsUpdate;
+// let enableTableCardsUpdate;
+// let disableTableCardsUpdate;
 
 (()=>{
 
@@ -12,13 +12,14 @@ let updater;
 let tableCardUpdater;
 
 let doms = [];
+let ucb;
 
 
 function enableUpdate()
 {
     if(pageReady && !nextUpdate)
     {
-        updateTableCards()
+        updateTableCards();
         updater = setInterval(updateTableCards, 5000);
         nextUpdate = true;
     }
@@ -28,7 +29,6 @@ function disableUpdate()
 {
     if(nextUpdate)
     {
-        document.on
         clearInterval(updater);
         nextUpdate = false;
     }
@@ -81,8 +81,6 @@ function initDOMElements()
 
     for(let i = 0; ; i++)
     {
-        if(document.getElementById(`table-card-${i}`) === null) break;
-
         let dom =
         {
             tc   : null,
@@ -109,15 +107,31 @@ function initDOMElements()
 
         doms.push(dom);
     }
+
+    ucb = document.getElementById("updateAlways");
 }
 
-enableTableCardsUpdate = enableUpdate;
-disableTableCardsUpdate = disableUpdate;
+// enableTableCardsUpdate = enableUpdate;
+// disableTableCardsUpdate = disableUpdate;
 
 document.addEventListener("DOMContentLoaded", event => { 
     initDOMElements();
     pageReady = true;
-    enableUpdate();
-}); 
+    // enableUpdate();
+    updateTableCards();
+
+    ucb.addEventListener("change", event => { 
+        if(ucb.checked)
+        {
+            // console.log("Start updating.");
+            enableUpdate();
+        }
+        else
+        {
+            // console.log("Stop updating.");
+            disableUpdate();
+        }
+    });
+});
 
 })();

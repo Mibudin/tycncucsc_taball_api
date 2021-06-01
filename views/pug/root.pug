@@ -23,6 +23,11 @@ block title-text
 
 block main-center
     //- span(data-mdb-toggle="tooltip", data-mdb-placement="top", title="進入登入頁面") as123s
+    div(class="d-flex justify-content-evenly")
+        div(class="form-check form-switch", data-mdb-toggle="tooltip", title="每五秒自動更新數據")
+            input(class="form-check-input", type="checkbox", id="updateAlways")
+            label(class="form-check-label", for="updateAlways") 即時更新
+    hr
     +_mixin-table-cards-dynamic(tableRecords.length)
     //- +_mixin-table-cards(tableRecords)
     //- div(class="row flex-wrap justify-content-evenly")
