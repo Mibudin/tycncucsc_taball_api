@@ -26,7 +26,7 @@ mixin _mixin-table-cards-dynamic(_tableAmount)
                         //- h5(class="card-title") 桌球桌 ID：#{___tableRecord.tableID}
                         h5(class="card-title") 桌球桌 ID：
                             span(class="taball-table-card-id") #{___i}
-                        table(class="card-text table table-bordered table-sm table-striped table-hover align-middle mt-3")
+                        table(class="taball-table-fixed card-text table table-bordered table-sm table-striped table-hover align-middle mt-3")
                             thead
                                 tr
                                     th(scope="col", colspan="2") 分數
@@ -39,7 +39,7 @@ mixin _mixin-table-cards-dynamic(_tableAmount)
                                     //- td #{___tableRecord.scores.b}
                                     td 0
                                     td 0
-                        table(class="card-text table table-bordered table-sm table-striped table-hover align-middle mt-3")
+                        table(class="taball-table-fixed card-text table table-bordered table-sm table-striped table-hover align-middle mt-3")
                             thead
                                 tr
                                     th(scope="col", colspan="2") 感測器
@@ -49,28 +49,28 @@ mixin _mixin-table-cards-dynamic(_tableAmount)
                                     th(scope="row", rowspan="3") 甲
                                     th(scope="row") 左
                                     //- td #{___tableRecord.distances.a.left}
-                                    td 0
+                                    td 0.0
                                 tr
                                     th(scope="row") 中
                                     //- td #{___tableRecord.distances.a.middle}
-                                    td 0
+                                    td 0.0
                                 tr
                                     th(scope="row") 右
                                     //- td #{___tableRecord.distances.a.right}
-                                    td 0
+                                    td 0.0
                                 tr
                                     th(scope="row", rowspan="3") 乙
                                     th(scope="row") 左
                                     //- td #{___tableRecord.distances.b.left}
-                                    td 0
+                                    td 0.0
                                 tr
                                     th(scope="row") 中
                                     //- td #{___tableRecord.distances.b.middle}
-                                    td 0
+                                    td 0.0
                                 tr
                                     th(scope="row") 右
                                     //- td #{___tableRecord.distances.b.right}
-                                    td 0
+                                    td 0.0
                     div(class="card-footer text-muted")
                         //- small 時間：#{___tableRecord.updateTime.toISOString()}
                         small 時間：

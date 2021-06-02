@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "forever": "forever --uid \"taball\" -a start app.js"
+    "forever": "forever --uid \"taball\" -a start app.js",
+    "foreverstop": "forever stop taball"
   },
   "author": "Taball",
   "license": "ISC",
@@ -18,6 +19,7 @@
     "express": "^4.17.1",
     "forever": "^3.0.4",
     "js-yaml": "^4.0.0",
+    "merge-deep": "^3.0.3",
     "mongodb": "^2.2.19",
     "pug": "^3.0.2",
     "schema-object": "^4.0.11",

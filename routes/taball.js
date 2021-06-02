@@ -22,7 +22,8 @@ router.use((req, res, next) => {
  * General
  */
 router.route("/")
-    .all((req, res) => {
+    // .all((req, res) => {
+    .get((req, res) => {
         // res.status(200).send("~TYCNCUCSC TABALL WEBSITE~");
         // let pugPath = viewController.pathnameToPugPathView(req.path);
         // let renderData = {};

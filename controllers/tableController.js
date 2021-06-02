@@ -1,6 +1,7 @@
 "use strict";
 
 const _ = require("underscore");
+const _merge = require("merge-deep");
 
 const TableRecordSchema = require("../schema/table");
 
@@ -14,7 +15,9 @@ let tableRecords = [];  // Should be SORTED
 
 function getTableRecords()
 {
-    return _.extend([], tableRecords);
+    // return _.extend([], tableRecords);
+    // return _.clone(tableRecords);
+    return _merge([], tableRecords)
 }
 
 /**
@@ -38,7 +41,9 @@ function getTableRecord(tableID)
     }
     if(s >= e) return undefined;
 
-    return _.extend({}, tableRecord);
+    // return _.extend({}, tableRecord);
+    // return _.clone(tableRecord);
+    return _merge({}, tableRecord);
 }
 
 /**
@@ -59,7 +64,7 @@ function initTableRecords(_tableAmount)
         //         isOccupied: false
         //     }
         // ).toObject();
-        tableRecords[i] = TableRecordSchema.init(i, nowTime).toObject();
+        tableRecords[i] = TableRecordSchema.init(i, new Date(nowTime)).toObject();
     }
 }
 
@@ -80,8 +85,12 @@ async function initTableRecordsDb(_tableAmount)
         _tableRecords = _tableRecords[0].records;
         for(let i = 0; i < _tableRecords.length; i++)
         {
-            _.extend(tableRecords[_tableRecords[i].tableID ? _tableRecords[i].tableID : i],
-                new TableRecordSchema(_tableRecords[i]).toObject());
+            // _.extend(tableRecords[_tableRecords[i].tableID ? _tableRecords[i].tableID : i],
+            //     new TableRecordSchema(_tableRecords[i]).toObject());
+            _.extend(
+                tableRecords[_tableRecords[i].tableID ? _tableRecords[i].tableID : i],
+                _merge(tableRecords[_tableRecords[i].tableID ? _tableRecords[i].tableID : i],
+                    new TableRecordSchema(_tableRecords[i]).toObject()));
         }
         if(_tableRecords.length < _tableAmount) recordTableRecords();
     }
@@ -98,7 +107,7 @@ function patchTableRecords(_tableRecords)
     for(let i = 0; i < _tableRecords.length; i++)
     {
         _tableRecords[i] = new TableRecordSchema(_tableRecords[i]);
-        _tableRecords[i].updateTime = nowTime;
+        _tableRecords[i].updateTime = new Date(nowTime);
         _tableRecords[i] = _tableRecords[i].toObject();
         _tableRecords[i].isOccupied = undefined;
     }
@@ -112,7 +121,8 @@ function patchTableRecords(_tableRecords)
         else if(tableRecords[i].tableID === _tableRecords[j].tableID)
         {
             if(!changed) changed = true;
-            _.extend(tableRecords[i], _tableRecords[j]);
+            // _.extend(tableRecords[i], _tableRecords[j]);
+            _.extend(tableRecords[i], _merge(tableRecords[i], _tableRecords[j]));
             
             // TODO: Determine whther occupied!!!
             tableRecords[i].isOccupied = determineOccupied(tableRecords[i].distances);
@@ -167,7 +177,10 @@ function patchTableRecord(tableID, _tableRecord)
     }
     if(s >= e) return false;
 
-    _.extend(tableRecord, _tableRecord);
+    // _.extend(tableRecord, _tableRecord);
+    // console.log(_tableRecord);
+    _.extend(tableRecord, _merge(tableRecord, _tableRecord));
+    // console.log(tableRecord);
     // TODO: Determine whther occupied!!!
     tableRecord.isOccupied = determineOccupied(tableRecord.distances);
 
@@ -180,7 +193,8 @@ function recordTableRecords()
         {
             // updateTime: new Date().toISOString(),
             updateTime: new Date(),
-            records: _.extend([], tableRecords)
+            // records: _.extend([], tableRecords)
+            records: _merge([], tableRecords)
         },
         ()=>{});
 }

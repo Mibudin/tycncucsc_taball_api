@@ -75,6 +75,18 @@
 .taball-table-card-dists{}
 .taball-table-card-time{}
 
+.taball-table-fixed
+{
+    table-layout: fixed;
+}
+
+.taball-table-fixed th,
+.taball-table-fixed td
+{
+    overflow: hidden;
+    white-space: nowrap;
+}
+
 /**********/
 /* Footer */
 /**********/

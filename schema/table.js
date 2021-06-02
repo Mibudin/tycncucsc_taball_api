@@ -6,9 +6,9 @@ const CS = require("./common");
 
 const DistanceSet =
 {
-    left:   CS.NumberPosInt,
-    middle: CS.NumberPosInt,
-    right:  CS.NumberPosInt
+    left:   CS.NumberPos,
+    middle: CS.NumberPos,
+    right:  CS.NumberPos
 };
 
 const TableRecordSchema = new SchemaObject(

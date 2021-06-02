@@ -65,12 +65,12 @@ function setTableCards(tableRecords)
         dom.tcht    .innerHTML = tableRecord.isOccupied ? " 已佔用 "     : " 未佔用 ";
         dom.tcbi    .innerHTML = tableRecord.tableID;
         dom.tcbs    .innerHTML = `<td>${tableRecord.scores.a}</td><td>${tableRecord.scores.b}</td>`;
-        dom.tcbds[0].innerHTML = tableRecord.distances.a.left;
-        dom.tcbds[1].innerHTML = tableRecord.distances.a.middle;
-        dom.tcbds[2].innerHTML = tableRecord.distances.a.right;
-        dom.tcbds[3].innerHTML = tableRecord.distances.b.left;
-        dom.tcbds[4].innerHTML = tableRecord.distances.b.middle;
-        dom.tcbds[5].innerHTML = tableRecord.distances.b.right;
+        dom.tcbds[0].innerHTML = tableRecord.distances.a.left  .toFixed(1);
+        dom.tcbds[1].innerHTML = tableRecord.distances.a.middle.toFixed(1);
+        dom.tcbds[2].innerHTML = tableRecord.distances.a.right .toFixed(1);
+        dom.tcbds[3].innerHTML = tableRecord.distances.b.left  .toFixed(1);
+        dom.tcbds[4].innerHTML = tableRecord.distances.b.middle.toFixed(1);
+        dom.tcbds[5].innerHTML = tableRecord.distances.b.right .toFixed(1);
         dom.tct     .innerHTML = tableRecord.updateTime;
     }
 }

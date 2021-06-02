@@ -69,6 +69,8 @@ paths:
       responses:
         200:
           description: "Successful operation"
+        304:
+          $ref: "#/responses/304"
         401:
           $ref: "#/responses/401"
 
@@ -86,6 +88,8 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/TableRecord"
+        304:
+          $ref: "#/responses/304"
         401:
           $ref: "#/responses/401"
 
@@ -127,6 +131,8 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/TableRecordScore"
+        304:
+          $ref: "#/responses/304"
         401:
           $ref: "#/responses/401"
 
@@ -144,6 +150,8 @@ paths:
           description: "Successful operation"
           schema:
             $ref: "#/definitions/TableRecord"
+        304:
+          $ref: "#/responses/304"
         401:
           $ref: "#/responses/401"
         404:
@@ -192,6 +200,8 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/TableRecordScore"
+        304:
+          $ref: "#/responses/304"
         401:
           $ref: "#/responses/401"
         404:
@@ -203,16 +213,16 @@ definitions:
     type: "object"
     properties:
       left:
-        type: "integer"
-        format: "int32"
+        type: "number"
+        format: "float"
         minimum: 0
       middle:
-        type: "integer"
-        format: "int32"
+        type: "number"
+        format: "float"
         minimum: 0
       right:
-        type: "integer"
-        format: "int32"
+        type: "number"
+        format: "float"
         minimum: 0
 
   TableRecord:
@@ -298,7 +308,9 @@ parameters:
         $ref: "#/definitions/TableRecord"
 
 
-responses:  # TODO: 401, 404
+responses:  # TODO: 304, 401, 404
+  304:
+    description: "Not modified"
   401:
     description: "Unauthorized"
     # schema:
