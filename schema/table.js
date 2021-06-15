@@ -15,8 +15,8 @@ const TableRecordSchema = new SchemaObject(
     {
         tableID:    CS.NumberPosInt,
         // updateTime: CS.DateISO,
-        updateTime: Date,
-        isOccupied: {type: Boolean, default: false},
+        updateTime: {type: Date/*, default: new Date()*/},
+        isOccupied: {type: Boolean/*, default: false*/},
         distances:
         {
             a: DistanceSet,  // In centimeter
@@ -43,8 +43,12 @@ const TableRecordSchema = new SchemaObject(
             {
                 this.super();
 
-                this.tableID = i;
-                this.updateTime = date;
+                this.tableID = i ? i : 0;
+                this.updateTime = date ? date : new Date();
+                this.isOccupied = false;
+                this.distances = {a: {left: 0, middle: 0, right: 0},
+                                  b: {left: 0, middle: 0, right: 0}};
+                this.scores = {a: 0, b: 0};
             }
         }
     }

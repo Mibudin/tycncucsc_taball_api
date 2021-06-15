@@ -6,8 +6,9 @@
   "scripts": {
     "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "forever": "forever --uid \"taball\" -a start app.js",
-    "foreverstop": "forever stop taball"
+    "forever-start": "forever --uid \"taball\" -a start app.js",
+    "forever-stop": "forever stop taball",
+    "forever-rs": "npm run forever-stop; npm run forever-start"
   },
   "author": "Taball",
   "license": "ISC",

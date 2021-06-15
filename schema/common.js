@@ -7,7 +7,7 @@ const NumberPos =
 {
     type: Number,
     min: 0,
-    default: 0
+    // default: 0
 };
 
 const NumberPosInt = _.extend(
@@ -21,7 +21,7 @@ const NumberPosInt = _.extend(
 const DateISO =
 {
     type: String,
-    default: new Date(0).toISOString(),
+    // default: new Date(0).toISOString(),
     transform: function(value)
     {
         return value instanceof Date ?

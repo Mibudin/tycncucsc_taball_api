@@ -91,6 +91,8 @@ async function initTableRecordsDb(_tableAmount)
                 tableRecords[_tableRecords[i].tableID ? _tableRecords[i].tableID : i],
                 _merge(tableRecords[_tableRecords[i].tableID ? _tableRecords[i].tableID : i],
                     new TableRecordSchema(_tableRecords[i]).toObject()));
+            // _merge(tableRecords[_tableRecords[i].tableID ? _tableRecords[i].tableID : i],
+            //     new TableRecordSchema(_tableRecords[i]).toObject());
         }
         if(_tableRecords.length < _tableAmount) recordTableRecords();
     }
@@ -123,6 +125,7 @@ function patchTableRecords(_tableRecords)
             if(!changed) changed = true;
             // _.extend(tableRecords[i], _tableRecords[j]);
             _.extend(tableRecords[i], _merge(tableRecords[i], _tableRecords[j]));
+            // _merge(tableRecords[i], _tableRecords[j]);
             
             // TODO: Determine whther occupied!!!
             tableRecords[i].isOccupied = determineOccupied(tableRecords[i].distances);
@@ -180,6 +183,7 @@ function patchTableRecord(tableID, _tableRecord)
     // _.extend(tableRecord, _tableRecord);
     // console.log(_tableRecord);
     _.extend(tableRecord, _merge(tableRecord, _tableRecord));
+    // _merge(tableRecord, _tableRecord);
     // console.log(tableRecord);
     // TODO: Determine whther occupied!!!
     tableRecord.isOccupied = determineOccupied(tableRecord.distances);
