@@ -262,8 +262,8 @@ function determineOccupied(distances)
     {
         if(dists[i] > 0)
         {
-                 if(dists[i] <= 50) sides[i < 3 ? 0 : 1] += 2;
-            else if(dists[i] <= 80) sides[i < 3 ? 0 : 1] += 1;
+                 if(dists[i] <= 50) sides[i < 3 ? 0 : 1] += 3; // FIXME: 2
+            else if(dists[i] <= 80) sides[i < 3 ? 0 : 1] += 3; // FIXME: 1
         }
     }
 
