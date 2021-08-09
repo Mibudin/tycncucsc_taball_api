@@ -76,7 +76,10 @@ function initTableRecords(_tableAmount)
 async function initTableRecordsDb(_tableAmount)
 {
     let _tableRecords = await ula.searchMany(CF.mongo.db.colles.table.name,
-        {}, {fields: {_id: 0}, sort: {updateTime: -1}, limit: 1});
+        {},
+        (CF.mongo.cf.oldVer ? {fields: {_id: 0}, sort: {updateTime: -1}}
+                            : {projection: {_id: 0}, sort: {updateTime: -1}}),
+        {limit: 1});
 
     initTableRecords(_tableAmount);
     if(_tableRecords.length === 0) recordTableRecords();

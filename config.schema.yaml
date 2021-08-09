@@ -1,26 +1,31 @@
 # The general configuration file of this server.
 
-server:
-  lan:
-    host: "192.168.50.199"
-    port: 3000
-  wan:
-    host: "140.115.200.35"
-    port: 8281
-  cf:
-    inDev: true
-    swagger: true
-    apiAuth: false
-    tableNum: 10
+### THIS IS A SCHEMA FILE ###
+### Optional fields also mean nullable. ###
 
-mongo:
-  local:
-    host: "127.0.0.1"
-    port: 27017
-  db:
-    name: "tycncucscTaball"
-    colles:
-      table:
-        name: "tableRecordColle"
-      user:
-        name: "userRecordColle"
+server:              #           The server settings. (Including network and other configurations.)
+  lan:               #           The LAN settings.
+    host: "0.0.0.0"  # {string}  The hostname.
+    port: 0          # {number}  The port number.
+  wan:               #           The WAN settings. (Only used in Swagger now.)
+    host: "0.0.0.0"  # {string?} The hostname.
+    port: 0          # {number?} The port number.
+  cf:                #           The other associative configurations of the server.
+    inDev: true      # {boolean} Whether this is run as being under development.
+    swagger: true    # {boolean} Whether to enable the API documentation web page.
+    apiAuth: false   # {boolean} Whether to enable the API authorization with IDs and keys. (Not implemented now.)
+    tableNum: 10     # {number}  The number of the table-tennis tables.
+
+mongo:               #           The MongoDB database settings.
+  local:             #           The local database settings.
+    host: "0.0.0.0"  # {string}  The hostname.
+    port: 0          # {number}  The port number.
+  db:                #           The database locating settings.
+    name: ""         # {string}  The name of the specific used database.
+    colles:          #           The collections locating settings.
+      table:         #           The settings of the collection storing records of table-tennis tables.
+        name: ""     # {string}  The name of the specific used collection.
+      user:          #           The settings of the collection storing data of API users. (Not implemented now.)
+        name: ""     # {string}  The name of the specific used collection.
+  cf:                #           The other associative configurations of the MongoDB database.
+    oldVer: true     # {boolean} Whether to apply the scripts for older versions of MongoDB rather than the newer one. (For details, "older" for 2.4.14; "newer" for 3.6.13.)

@@ -3,10 +3,13 @@
 const Express = require("express");
 const app = Express();
 
+// The general logger.
 const logger = require("./lib/logger/logger");
 
+// The main general configurations.
 const CF = require("js-yaml").load(require("fs").readFileSync("./config.yaml", "utf8"));;
 
+// The main database interface.
 const ula = new (require("./lib/uList/UListAsync").UListAsync)(
     new (require("./lib/uList/UList").UList)(
         CF.mongo.local.host, CF.mongo.local.port, CF.mongo.db.name));
@@ -21,13 +24,11 @@ const ula = new (require("./lib/uList/UListAsync").UListAsync)(
  * Initializa the MongoDB driver.
  */
 await ula.connectToDB();
-// if(CF.server.cf.inDev) await ula.dropCollection(CF.mongo.db.colles.table.name)
 logMsg("ULA", "CONNECT_DB", "COMPLETED");
 
 /**
  * Initialize controllers
  */
-// require("./controllers/tableController").initTableRecords(CF.server.cf.tableNum);
 await require("./controllers/tableController").initTableRecordsDb(CF.server.cf.tableNum);
 logMsg("TABLE_CTRLR", "INIT", "COMPLETED");
 
@@ -72,7 +73,8 @@ logMsg("APP", "USE_API", "COMPLETED");
  */
 if(CF.server.cf.swagger)
 {
-    require("./api/swagger").useSwagger(app);
+    require("./api/swagger").useSwagger(app,
+        {api: "/api/v0", docs: "/api-docs/v0", docsDark: "/api-docs-dark/v0"});
     logMsg("APP", "USE_SWAGGER", "COMPLETED");
 }
 
@@ -87,8 +89,8 @@ logMsg("APP", "USE_TABALL", "COMPLETED");
 /**
  * Express APP start server
  */
-app.listen(app.get("port")/*, app.get("hostName")*/);
-// console.log("~TYCNCUCSC TABALL API~\nThe server is now started on the port: " + app.get("port"));
+await new Promise((res, rej) => {
+    app.listen(app.get("port"), app.get("hostName"), res);});
 logMsg("APP", "LISTEN", "COMPLETED][" + app.get("port"));
 
 
@@ -97,11 +99,12 @@ logMsg("APP", "LISTEN", "COMPLETED][" + app.get("port"));
  */
 })();
 
+
 /**
- * 
- * @param {string} obj 
- * @param {string} phs 
- * @param {string} rslt 
+ * The general logging function.
+ * @param {string} obj The main object.
+ * @param {string} phs The main phase.
+ * @param {string} rslt The result.
  */
 function logMsg(obj, phs, rslt)
 {

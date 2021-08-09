@@ -30,8 +30,8 @@ externalDocs:
 
 
 # host: "wasabi-neko.tw:3000"
-# host: "localhost:3000"
-host: "140.115.200.35:8281"
+# host: "140.115.200.35:8281"
+host: "localhost:3000"
 basePath: "/api/v0"
 
 
