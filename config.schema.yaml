@@ -1,0 +1,26 @@
+# The general configuration file of this server.
+
+server:
+  lan:
+    host: "192.168.50.199"
+    port: 3000
+  wan:
+    host: "140.115.200.35"
+    port: 8281
+  cf:
+    inDev: true
+    swagger: true
+    apiAuth: false
+    tableNum: 10
+
+mongo:
+  local:
+    host: "127.0.0.1"
+    port: 27017
+  db:
+    name: "tycncucscTaball"
+    colles:
+      table:
+        name: "tableRecordColle"
+      user:
+        name: "userRecordColle"

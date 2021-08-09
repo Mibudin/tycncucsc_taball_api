@@ -87,7 +87,7 @@ logMsg("APP", "USE_TABALL", "COMPLETED");
 /**
  * Express APP start server
  */
-app.listen(app.get("port"), app.get("hostName"));
+app.listen(app.get("port")/*, app.get("hostName")*/);
 // console.log("~TYCNCUCSC TABALL API~\nThe server is now started on the port: " + app.get("port"));
 logMsg("APP", "LISTEN", "COMPLETED][" + app.get("port"));
 
