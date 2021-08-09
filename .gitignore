@@ -116,4 +116,4 @@ dist
 .pnp.*
 
 # Configuration files
-# config.yaml
+config.yaml
