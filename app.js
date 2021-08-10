@@ -89,8 +89,8 @@ logMsg("APP", "USE_TABALL", "COMPLETED");
 /**
  * Express APP start server
  */
-await new Promise((res, rej) => {
-    app.listen(app.get("port"), app.get("hostName"), res);});
+await new Promise((rs, rj) => {
+    try{app.listen(app.get("port"), app.get("hostName"), rs);}catch(e){rj(e)}});
 logMsg("APP", "LISTEN", "COMPLETED][" + app.get("port"));
 
 

@@ -1,7 +1,7 @@
 {
   "name": "tycncucsc_taball_api",
   "version": "0.1",
-  "description": "The backend API for TYCNCUCSC TABALL.",
+  "description": "The backend API and the website for TYCNCUCSC TABALL.",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
@@ -10,7 +10,7 @@
     "forever-stop": "forever stop taball",
     "forever-rs": "npm run forever-stop; npm run forever-start"
   },
-  "author": "TYCNCUCSC TABALL",
+  "author": "TYCNCUCSC TABALL PROJECT",
   "license": "MIT",
   "devDependencies": {
     "nodemon": "^2.0.7",
