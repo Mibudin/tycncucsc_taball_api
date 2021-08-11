@@ -7,7 +7,7 @@ const app = Express();
 const logger = require("./lib/logger/logger");
 
 // The main general configurations.
-const CF = require("js-yaml").load(require("fs").readFileSync("./config.yaml", "utf8"));;
+const CF = require("js-yaml").load(require("fs").readFileSync("./config.yaml", "utf8"));
 
 // The main database interface.
 const ula = new (require("./lib/uList/UListAsync").UListAsync)(

@@ -189,7 +189,7 @@ router.use((err, req, res, next) => {
 
 
 /**
- * Initialize the router
+ * Initialize the router.
  * @deprecated Controllers initializations all in `app.js`.
  * @param {number} tablesNum 
  * @returns The router
@@ -201,9 +201,9 @@ function initRouter(tablesNum)
 }
 
 /**
- * 
- * @param {"Request"} req 
- * @param {"Response"} res 
+ * The general logging function.
+ * @param {"Request"} req The request.
+ * @param {"Response"} res The response.
  */
 function logMsg(req, res)
 {

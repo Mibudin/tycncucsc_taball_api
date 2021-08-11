@@ -59,9 +59,9 @@ router.use((err, req, res, next) => {
 
 
 /**
- * 
- * @param {"Request"} req 
- * @param {"Response"} res 
+ * The general logging function.
+ * @param {"Request"} req The reauest.
+ * @param {"Response"} res The response.
  */
 function logMsg(req, res)
 {

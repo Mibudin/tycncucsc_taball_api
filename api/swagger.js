@@ -4,8 +4,9 @@ const CF = require("../app").CF;
 
 
 /**
- * 
- * @param {"Express"} app 
+ * Let the Express application use the Swagger.
+ * @param {"Express"} app The Express applicaiton.
+ * @param {object} paths The path to use the Swagger.
  */
 function useSwagger(app, paths)
 {

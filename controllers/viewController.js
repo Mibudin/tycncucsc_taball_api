@@ -7,8 +7,8 @@ let pageObjects = new Map();
 
 
 /**
- * 
- * @param {string[]} pathnames 
+ * Initialize the page objects by multiple pathnames.
+ * @param {string[]} pathnames The pathnames of the Pug files.
  */
 function initViewPages(pathnames)
 {
@@ -18,10 +18,10 @@ function initViewPages(pathnames)
 }
 
 /**
- * 
- * @param {string} pathname 
- * @param {Object} renderData 
- * @returns 
+ * Render a page object to a HTML page data.
+ * @param {string} pathname The pathname of the Pug file.
+ * @param {Object} renderData The data object used in rendering.
+ * @returns The rendered HTML page data.
  */
 function renderViewPage(pathname, renderData)
 {
@@ -35,9 +35,9 @@ function renderViewPage(pathname, renderData)
 }
 
 /**
- * 
- * @param {string} pathname 
- * @returns 
+ * Translate the simple pathname to the corresponding full pathname.
+ * @param {string} pathname The simple pathname to be translated.
+ * @returns The translated full pathname.
  */
 function pathnameToPugPath(pathname)
 {
@@ -45,9 +45,9 @@ function pathnameToPugPath(pathname)
 }
 
 /**
- * 
- * @param {string} pathname 
- * @returns 
+ * Translate the simple pathname to the corresponding Pug file pathname.
+ * @param {string} pathname The simple pathname to be translated.
+ * @returns The translated Pug file pathname.
  */
 function pathnameToPugPathView(pathname)
 {

@@ -13,17 +13,21 @@ let tableAmount = 0;
 let tableRecords = [];  // Should be SORTED
 
 
+/**
+ * Get all the records of tables.
+ * @returns All the records of tables.
+ */
 function getTableRecords()
 {
     // return _.extend([], tableRecords);
     // return _.clone(tableRecords);
-    return _merge([], tableRecords)
+    return _merge([], tableRecords);
 }
 
 /**
- * 
- * @param {number} tableID 
- * @returns 
+ * Get the record of the certain table.
+ * @param {number} tableID The table ID of the certain table.
+ * @returns The record of the certain table.
  */
 function getTableRecord(tableID)
 {
@@ -47,8 +51,8 @@ function getTableRecord(tableID)
 }
 
 /**
- * 
- * @param {number} _tableAmount 
+ * Initialize all the records of tables in the beginning.
+ * @param {number} _tableAmount The number of all tables needed to be initialized.
  */
 function initTableRecords(_tableAmount)
 {
@@ -70,8 +74,8 @@ function initTableRecords(_tableAmount)
 
 
 /**
- * 
- * @param {number} _tableAmount 
+ * Initialize all the records of tables in the beginning with the database.
+ * @param {number} _tableAmount The number of all tables needed to be initialized.
  */
 async function initTableRecordsDb(_tableAmount)
 {
@@ -102,9 +106,9 @@ async function initTableRecordsDb(_tableAmount)
 }
 
 /**
- * 
- * @param {"TableRecord"[]} _tableRecords
- * @returns
+ * Pathch multiple records of tables.
+ * @param {"TableRecord"[]} _tableRecords The records of tables to be patched.
+ * @returns Whether the original records changed.
  */
 function patchTableRecords(_tableRecords)
 {
@@ -144,10 +148,10 @@ function patchTableRecords(_tableRecords)
 }
 
 /**
- * 
- * @param {number} tableID
- * @param {"TableRecord"} _tableRecord
- * @returns
+ * Patch the record of the certain table.
+ * @param {number} tableID The table ID of the certain table.
+ * @param {"TableRecord"} _tableRecord The record of the certain table to be patched.
+ * @returns Whether it is success to patch.
  */
 function patchTableRecord(tableID, _tableRecord)
 {
@@ -188,12 +192,15 @@ function patchTableRecord(tableID, _tableRecord)
     _.extend(tableRecord, _merge(tableRecord, _tableRecord));
     // _merge(tableRecord, _tableRecord);
     // console.log(tableRecord);
-    // TODO: Determine whther occupied!!!
+    // TODO: Determine whether occupied!!!
     tableRecord.isOccupied = determineOccupied(tableRecord.distances);
 
     return true;
 }
 
+/**
+ * Record all the records of tables into the database.
+ */
 function recordTableRecords()
 {
     ula.ul.pushOne(CF.mongo.db.colles.table.name,
@@ -246,9 +253,9 @@ function recordTableRecords()
 //     有人
 
 /**
- * 
- * @param {Object} distances
- * @returns
+ * Determine whether a table is occupied by the distance sets.
+ * @param {Object} distances The ddistance sets.
+ * @returns Whether a table is occupied.
  */
 function determineOccupied(distances)
 {
@@ -265,8 +272,8 @@ function determineOccupied(distances)
     {
         if(dists[i] > 0)
         {
-                 if(dists[i] <= 50) sides[i < 3 ? 0 : 1] += 3; // FIXME: 2
-            else if(dists[i] <= 80) sides[i < 3 ? 0 : 1] += 3; // FIXME: 1
+                 if(dists[i] <= 50) sides[i < 3 ? 0 : 1] += 3;  // FIXME: 2
+            else if(dists[i] <= 80) sides[i < 3 ? 0 : 1] += 3;  // FIXME: 1
         }
     }
 

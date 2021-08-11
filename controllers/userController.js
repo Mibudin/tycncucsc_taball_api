@@ -6,10 +6,10 @@ const userRecords = require("../data/userRecords.json");
 
 
 /**
- * 
- * @param {string} id 
- * @param {string} key 
- * @returns 
+ * Authorize a log-in user of the API.
+ * @param {string} id The ID of the user.
+ * @param {string} key The key of the user.
+ * @returns If authorized, return the data of the user.
  */
 function authUsers(id, key)
 {

@@ -210,8 +210,10 @@ To continuous run and automatically re-run this service, the default way is to u
 npm run forever-start
 # Stop
 npm run forever-stop
-# Re-start (stop and start again)
+# Re-start (for Linux shell)
 npm run forever-rs
+# Re-start (for Windows NT shell)
+npm run forever-rs-w
 ```
 
 *(If needed, [install **forever** globally](#forever))*

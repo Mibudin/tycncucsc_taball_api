@@ -8,7 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "forever-start": "forever --uid \"taball\" -a start app.js",
     "forever-stop": "forever stop taball",
-    "forever-rs": "npm run forever-stop; npm run forever-start"
+    "forever-rs": "npm run forever-stop; npm run forever-start",
+    "forever-rs-w": "npm run forever-stop& npm run forever-start"
   },
   "author": "TYCNCUCSC TABALL PROJECT",
   "license": "MIT",
