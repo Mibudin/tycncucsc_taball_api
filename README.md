@@ -1,6 +1,6 @@
 # ~ TYCNCUCSC TABALL API ~
 
-| ***TABALL API*** | ***TABALL Monitor*** |
+| **TABALL API** | **TABALL Monitor** |
 | :-: | :-: |
 | ![](assets/swagger/favicon.ico) | ![](assets/taball/favicon.ico) |
 | A RESTful API to interact with records | A website to monitor records |
@@ -162,7 +162,7 @@ npm install
 
 First, copy the file `config.schema.yaml` and renamed it as `config.yaml`.
 
-Then, change settings in this file. It is suggested to read and follow the explainations.
+Then, change settings in this file. It is suggested to read and follow the comments of explainations.
 
 For example, for a most limited simpleast runnable configuration file in default *MAY* like this:
 ```yaml
@@ -223,12 +223,16 @@ Of course, it is possible to use other ways to manage continuous services.
 
 ### TABALL API 
 
+***A RESTful API to interact with records.***
+
 URL of the service: 
 ```
 /api/v0
 ```
 
 ### TABALL API Documentation
+
+***An interactible Swagger API documentation.***
 
 URL of the service (light theme): 
 ```
@@ -242,25 +246,36 @@ URL of the service (dark theme):
 
 ### TABALL Monitor
 
+***A website to monitor records.***
+
 URL of the service: 
 ```
 /taball
 ```
 
+
 ## Dependencies
+
+The following are some major dependencies including several important Node.js modules. This list is for the purpose of shortly showing some important components in the whole server structure, and sources of some icons and images.
+
+For more details about all required Node.js modules, see the file `package.json`.
 
 - [Node.js](https://nodejs.org)
 - [npm](https://www.npmjs.com/)
 - [Express](https://expressjs.com)
 - [MongoDB](https://www.mongodb.com/)
 - [forever](https://github.com/foreversd/forever)
+- [Swagger](https://swagger.io)
+- [Material Designn for Bootstrap](https://mdbootstrap.com)
+- [Font Awesome](https://fontawesome.com)
 
 
 ## TODOs
 
-<!-- TODO: -->
-- Licences
-- From ...
-- Ref ...
-- Icon ...
-- Minify
+- Minify some essentail Javascript and CSS files.
+- Re-write the error handling.
+- Improve (or re-write) the intermediate interface of the MongoDB driver for more advanced applications.
+- Apply Typescript.
+- Implement the API authorization.
+- Implement the request quantity control of the API.
+- Improvement the TABALL Monitor.
